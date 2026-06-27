@@ -1,0 +1,274 @@
+{
+  "appName": "মাআরক্ষা",
+  "tagline": "AI-চালিত মাতৃ স্বাস্থ্য প্রাথমিক সতর্কতা নেটওয়ার্ক",
+  "demoMode": "ডেমো মোড",
+  "nav": {
+    "home": "হোম",
+    "voiceReport": "ভয়েস রিপোর্ট",
+    "dailyCheckin": "দৈনিক চেক-ইন",
+    "journey": "গর্ভাবস্থার যাত্রা",
+    "appointments": "অ্যাপয়েন্টমেন্ট",
+    "medicines": "ওষুধ",
+    "assistant": "AI সহকারী",
+    "reports": "স্বাস্থ্য রিপোর্ট",
+    "notifications": "বিজ্ঞপ্তি",
+    "dashboard": "ড্যাশবোর্ড",
+    "dailyHealth": "দৈনিক স্বাস্থ্য",
+    "aiRiskForecast": "AI ঝুঁকি পূর্বাভাস",
+    "healthTwin": "স্বাস্থ্য টুইন",
+    "knowledgeHub": "জ্ঞান কেন্দ্র",
+    "nutritionPlanner": "পুষ্টি পরিকল্পনাকারী",
+    "medicalCenter": "চিকিৎসা কেন্দ্র",
+    "emergencyHospitals": "জরুরি ও হাসপাতাল",
+    "findHospital": "হাসপাতাল খুঁজুন"
+  },
+  "common": {
+    "week": "সপ্তাহ",
+    "score": "স্কোর",
+    "trimester": "ত্রৈমাসিক",
+    "today": "আজ",
+    "loading": "লোড হচ্ছে...",
+    "save": "সংরক্ষণ করুন",
+    "cancel": "বাতিল",
+    "back": "পিছনে",
+    "refresh": "রিফ্রেশ",
+    "yes": "হ্যাঁ",
+    "no": "না",
+    "current": "বর্তমান",
+    "viewDetails": "বিস্তারিত দেখুন",
+    "submit": "জমা দিন",
+    "close": "বন্ধ করুন",
+    "getStarted": "শুরু করুন",
+    "high": "উচ্চ",
+    "medium": "মাঝারি",
+    "low": "কম",
+    "total": "মোট"
+  },
+  "risk": {
+    "green": "কম ঝুঁকি",
+    "yellow": "মাঝারি ঝুঁকি",
+    "red": "উচ্চ ঝুঁকি",
+    "assessment": "ঝুঁকি মূল্যায়ন",
+    "score": "স্কোর"
+  },
+  "sos": {
+    "button": "জরুরি SOS — সাহায্যের জন্য ট্যাপ করুন",
+    "tapToSend": "জরুরি সতর্কতা পাঠাতে ট্যাপ করুন",
+    "alertSent": "✓ ASHA ও পরিবারকে সতর্কতা পাঠানো হয়েছে",
+    "emergency": "জরুরি",
+    "goToHospital": "🚨 অবিলম্বে হাসপাতালে যান যদি:",
+    "warningSigns": [
+      "যেকোনো পরিমাণে যোনি রক্তপাত",
+      "১২+ ঘণ্টা শিশুর নড়াচড়া নেই",
+      "তীব্র মাথাব্যথা + ঝাপসা দৃষ্টি + ফোলাভাব",
+      "তীব্র পেটব্যথা",
+      "পানি ভাঙা / তরল নিঃসরণ",
+      "খিঁচুনি / আক্ষেপ"
+    ],
+    "sent": "পাঠানো হয়েছে",
+    "urgentAction": "তাৎক্ষণিক পদক্ষেপ প্রয়োজন",
+    "urgentDesc": "আপনার ASHA কর্মীকে যোগাযোগ করুন বা PHC-তে যান। দেরি করবেন না।",
+    "recentAlerts": "সাম্প্রতিক সতর্কতা",
+    "alert": "সতর্কতা",
+    "alertActive": "জরুরি সতর্কতা সক্রিয়",
+    "ensureCare": "অনুগ্রহ করে {{name}} কে তাৎক্ষণিক চিকিৎসা সেবা নিশ্চিত করুন।"
+  },
+  "woman": {
+    "dashboardTitle": "আমার স্বাস্থ্য ড্যাশবোর্ড",
+    "welcomeBack": "ফিরে আসার জন্য স্বাগতম,",
+    "gestationalWeek": "গর্ভকালীন সপ্তাহ",
+    "dueDate": "প্রসবের তারিখ",
+    "quickActions": "দ্রুত কার্যক্রম",
+    "askAI": "AI জিজ্ঞাসা করুন",
+    "pregnancySummary": "গর্ভাবস্থার সারসংক্ষেপ",
+    "babyDevelopment": "শিশুর বিকাশ",
+    "weeksLeft": "সপ্তাহ বাকি",
+    "checkInComplete": "আজকের চেক-ইন ✓",
+    "tapToReport": "আজ রিপোর্ট করতে ট্যাপ করুন",
+    "aiHealthInsights": "AI স্বাস্থ্য অন্তর্দৃষ্টি",
+    "currentRiskScore": "বর্তমান ঝুঁকি স্কোর",
+    "upcomingActions": "আসন্ন কার্যক্রম ও ইভেন্ট",
+    "monthlyCheckinCalendar": "মাসিক চেক-ইন ক্যালেন্ডার",
+    "improving": "উন্নতি হচ্ছে ↓",
+    "worsening": "বাড়ছে ↑",
+    "stable": "স্থিতিশীল →"
+  },
+  "journey": {
+    "title": "গর্ভাবস্থার যাত্রা",
+    "weeksAlong": "সপ্তাহ হয়েছে",
+    "weeksLeft": "সপ্তাহ বাকি",
+    "noReportSubmitted": "কোনো রিপোর্ট জমা দেওয়া হয়নি",
+    "symptomsReported": "রিপোর্ট করা লক্ষণ",
+    "medicines": "ওষুধ",
+    "hydration": "জলপান",
+    "notes": "নোট",
+    "aiRecommendation": "AI সুপারিশ",
+    "daysTracked": "ট্র্যাক করা দিন",
+    "weekDays": [
+      "রবি",
+      "সোম",
+      "মঙ্গ",
+      "বুধ",
+      "বৃহ",
+      "শুক্র",
+      "শনি"
+    ],
+    "trimester1": {
+      "label": "প্রথম ত্রৈমাসিক",
+      "weeks": "1–12",
+      "description": "সমস্ত প্রধান অঙ্গ গঠন।"
+    },
+    "trimester2": {
+      "label": "দ্বিতীয় ত্রৈমাসিক",
+      "weeks": "13–27",
+      "description": "শিশু দ্রুত বাড়ে।"
+    },
+    "trimester3": {
+      "label": "তৃতীয় ত্রৈমাসিক",
+      "weeks": "28–40",
+      "description": "শেষ পর্যায়। প্রসবের জন্য প্রস্তুত হন।"
+    },
+    "legend": {
+      "lowRisk": "কম ঝুঁকি",
+      "mediumRisk": "মাঝারি ঝুঁকি",
+      "highRisk": "উচ্চ ঝুঁকি",
+      "missed": "মিস হয়েছে",
+      "appointment": "অ্যাপয়েন্টমেন্ট",
+      "milestone": "মাইলফলক"
+    }
+  },
+  "checkin": {
+    "title": "দৈনিক স্বাস্থ্য চেক-ইন",
+    "howFeeling": "আজ আপনি কেমন অনুভব করছেন?",
+    "selectAllSymptoms": "আজকের সমস্ত লক্ষণ নির্বাচন করুন:",
+    "continueToVitals": "ভাইটালস-এ যান",
+    "analyzeWithAI": "AI দিয়ে বিশ্লেষণ করুন",
+    "analyzing": "বিশ্লেষণ হচ্ছে…",
+    "newCheckin": "+ নতুন চেক-ইন শুরু করুন",
+    "inputModes": {
+      "chips": "দ্রুত নির্বাচন",
+      "voice": "ভয়েস",
+      "text": "টাইপ করুন"
+    },
+    "symptoms_list": {
+      "headache": "মাথাব্যথা",
+      "fever": "জ্বর",
+      "bleeding": "রক্তপাত",
+      "dizziness": "মাথা ঘোরা",
+      "swelling": "ফোলাভাব",
+      "reduced_fm": "শিশুর নড়াচড়া কমেছে",
+      "vomiting": "বমি / বমি বমি ভাব",
+      "high_bp": "উচ্চ রক্তচাপ",
+      "ab_pain": "পেটব্যথা",
+      "fatigue": "ক্লান্তি",
+      "vision": "ঝাপসা দৃষ্টি",
+      "no_symptoms": "আজ কোনো লক্ষণ নেই"
+    },
+    "moods": {
+      "great": "খুব ভালো",
+      "good": "ভালো",
+      "okay": "ঠিকঠাক",
+      "poor": "খারাপ",
+      "bad": "খুব খারাপ"
+    }
+  },
+  "assistant": {
+    "title": "AI মাতৃ স্বাস্থ্য সহকারী",
+    "placeholder": "লক্ষণ, পুষ্টি, অ্যাপয়েন্টমেন্ট সম্পর্কে জিজ্ঞাসা করুন...",
+    "notMedicalAdvice": "এটি চিকিৎসা পরামর্শ নয়। গুরুতর লক্ষণে ডাক্তার দেখান।",
+    "greeting": "নমস্কার! আমি আপনার MaaRaksha AI স্বাস্থ্য সহকারী। গর্ভাবস্থার লক্ষণ, পুষ্টি, কখন সাহায্য নেবেন সে সম্পর্কে জিজ্ঞাসা করুন।",
+    "quickTopics": {
+      "symptoms": "লক্ষণ",
+      "nutrition": "পুষ্টি",
+      "emergency": "জরুরি",
+      "medicines": "ওষুধ",
+      "hydration": "জল",
+      "asha": "ASHA"
+    }
+  },
+  "notifications": {
+    "title": "বিজ্ঞপ্তি কেন্দ্র",
+    "empty": "এখনো কোনো বিজ্ঞপ্তি নেই",
+    "markAllRead": "সব পঠিত হিসেবে চিহ্নিত করুন"
+  },
+  "login": {
+    "welcome": "MaaRaksha-তে স্বাগতম",
+    "subtitle": "সাইন ইন করুন বা ডেমো ব্যবহার করুন",
+    "signIn": "সাইন ইন",
+    "orTryDemo": "অথবা ডেমো ব্যবহার করুন",
+    "emailPlaceholder": "ইমেইল",
+    "passwordPlaceholder": "পাসওয়ার্ড (demo123)",
+    "roles": {
+      "woman": {
+        "label": "গর্ভবতী মহিলা",
+        "desc": "ভয়েস রিপোর্ট, যাত্রা, SOS"
+      },
+      "asha": {
+        "label": "ASHA কর্মী",
+        "desc": "অগ্রাধিকার ড্যাশবোর্ড"
+      },
+      "family": {
+        "label": "পরিবারের সদস্য",
+        "desc": "সতর্কতা ও স্বাস্থ্য আপডেট"
+      },
+      "phc": {
+        "label": "PHC প্রশাসক",
+        "desc": "ক্লিনিকাল রিপোর্ট"
+      },
+      "district": {
+        "label": "জেলা কর্মকর্তা",
+        "desc": "জনসংখ্যা পর্যবেক্ষণ"
+      }
+    }
+  },
+  "onboarding": {
+    "welcome": "আপনার স্বাস্থ্য প্রোফাইল সেট আপ করি",
+    "step1Title": "আপনার সম্পর্কে",
+    "step2Title": "আপনার গর্ভাবস্থা",
+    "step3Title": "স্বাস্থ্য বিবরণ",
+    "step4Title": "লক্ষণ ও রিপোর্ট",
+    "yourName": "আপনার নাম",
+    "yourAge": "আপনার বয়স",
+    "pregnancyMonth": "আপনি গর্ভাবস্থার কোন মাসে আছেন?",
+    "month": "মাস",
+    "yourWeight": "আপনার বর্তমান ওজন",
+    "startJourney": "বিশ্লেষণ করুন এবং যাত্রা শুরু করুন"
+  },
+  "pregnancyCard": {
+    "week": "সপ্তাহ",
+    "score": "স্কোর",
+    "trimester": "ত্রৈমাসিক",
+    "lastReport": "শেষ রিপোর্ট:"
+  },
+  "asha": {
+    "dashboardTitle": "ASHA কর্মী ড্যাশবোর্ড",
+    "totalPregnancies": "মোট গর্ভাবস্থা",
+    "priorityDashboard": "অগ্রাধিকার ড্যাশবোর্ড",
+    "searchPlaceholder": "নাম বা গ্রাম দিয়ে খুঁজুন..."
+  },
+  "family": {
+    "dashboardTitle": "পরিবার ড্যাশবোর্ড",
+    "currentRisk": "বর্তমান ঝুঁকি:"
+  },
+  "district": {
+    "dashboardTitle": "জেলা কর্মকর্তা ড্যাশবোর্ড",
+    "activePregnancies": "সক্রিয় গর্ভাবস্থা"
+  },
+  "phc": {
+    "dashboardTitle": "PHC প্রশাসক ড্যাশবোর্ড",
+    "totalPatients": "মোট রোগী"
+  },
+  "knowledge": {
+    "keyActions": "এই সপ্তাহে মূল পদক্ষেপ:",
+    "youAreHere": "আপনি এখানে আছেন",
+    "title": "জ্ঞান কেন্দ্র",
+    "weekGuide": "সাপ্তাহিক গাইড",
+    "warningSigns": "সতর্কতা লক্ষণ",
+    "seekHelp": "এর মধ্যে কোনোটি অনুভব করলে অবিলম্বে সাহায্য নিন:",
+    "emergency": "🚨 জরুরি",
+    "urgent": "⚠️ আর্জেন্ট",
+    "whenInDoubt": "সন্দেহ হলে, ASHA কর্মীর সাথে যোগাযোগ করুন বা PHC-তে যান।",
+    "education": "গর্ভাবস্থা শিক্ষা",
+    "subtitle": "সুস্থ গর্ভাবস্থার জন্য সাপ্তাহিক গাইডেন্স · সপ্তাহ {{week}}"
+  }
+}

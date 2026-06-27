@@ -1,0 +1,274 @@
+{
+  "appName": "మాఆరక్ష",
+  "tagline": "AI-శక్తి గల మాతృ ఆరోగ్య ప్రారంభ హెచ్చరిక నెట్‌వర్క్",
+  "demoMode": "డెమో మోడ్",
+  "nav": {
+    "home": "హోమ్",
+    "voiceReport": "వాయిస్ రిపోర్ట్",
+    "dailyCheckin": "దైనందిన తనిఖీ",
+    "journey": "గర్భకాల ప్రయాణం",
+    "appointments": "అపాయింట్‌మెంట్‌లు",
+    "medicines": "మందులు",
+    "assistant": "AI సహాయకుడు",
+    "reports": "ఆరోగ్య నివేదికలు",
+    "notifications": "నోటిఫికేషన్‌లు",
+    "dashboard": "డాష్‌బోర్డ్",
+    "dailyHealth": "దైనందిన ఆరోగ్యం",
+    "aiRiskForecast": "AI రిస్క్ అంచనా",
+    "healthTwin": "హెల్త్ ట్విన్",
+    "knowledgeHub": "నాలెడ్జ్ హబ్",
+    "nutritionPlanner": "పోషణ ప్లానర్",
+    "medicalCenter": "వైద్య కేంద్రం",
+    "emergencyHospitals": "అత్యవసరం & ఆసుపత్రులు",
+    "findHospital": "ఆసుపత్రి కనుగొనండి"
+  },
+  "common": {
+    "week": "వారం",
+    "score": "స్కోర్",
+    "trimester": "త్రైమాసికం",
+    "today": "ఈరోజు",
+    "loading": "లోడ్ అవుతోంది...",
+    "save": "సేవ్ చేయి",
+    "cancel": "రద్దు",
+    "back": "వెనక్కి",
+    "refresh": "రిఫ్రెష్",
+    "yes": "అవును",
+    "no": "కాదు",
+    "current": "ప్రస్తుత",
+    "viewDetails": "వివరాలు చూడండి",
+    "submit": "సమర్పించు",
+    "close": "మూసివేయి",
+    "getStarted": "ప్రారంభించు",
+    "high": "అధిక",
+    "medium": "మధ్యస్థ",
+    "low": "తక్కువ",
+    "total": "మొత్తం"
+  },
+  "risk": {
+    "green": "తక్కువ ప్రమాదం",
+    "yellow": "మధ్యస్థ ప్రమాదం",
+    "red": "అధిక ప్రమాదం",
+    "assessment": "రిస్క్ అసెస్మెంట్",
+    "score": "స్కోర్"
+  },
+  "sos": {
+    "button": "అత్యవసర SOS — సహాయం కోసం నొక్కండి",
+    "tapToSend": "అత్యవసర అలర్ట్ పంపడానికి నొక్కండి",
+    "alertSent": "✓ ASHA & కుటుంబానికి అలర్ట్ పంపబడింది",
+    "emergency": "అత్యవసరం",
+    "goToHospital": "🚨 వెంటనే ఆసుపత్రికి వెళ్ళండి:",
+    "warningSigns": [
+      "ఏ మొత్తంలోనైనా యోని రక్తస్రావం",
+      "12+ గంటలు శిశువు కదలిక లేదు",
+      "తీవ్రమైన తలనొప్పి + మసక దృష్టి + వాపు",
+      "తీవ్రమైన పొట్ట నొప్పి",
+      "నీరు విరవడం / ద్రవం కారడం",
+      "వణుకు / మూర్ఛ"
+    ],
+    "sent": "పంపబడింది",
+    "urgentAction": "తక్షణ చర్య అవసరం",
+    "urgentDesc": "మీ ASHA వర్కర్‌ని సంప్రదించండి లేదా అత్యవసరంగా PHCకి వెళ్ళండి.",
+    "recentAlerts": "ఇటీవలి అలర్ట్‌లు",
+    "alert": "అలర్ట్",
+    "alertActive": "అత్యవసర అలర్ట్ సక్రియంగా ఉంది",
+    "ensureCare": "{{name}} కి తక్షణ వైద్య సహాయం అందించండి."
+  },
+  "woman": {
+    "dashboardTitle": "నా ఆరోగ్య డాష్‌బోర్డ్",
+    "welcomeBack": "తిరిగి స్వాగతం,",
+    "gestationalWeek": "గర్భకాల వారం",
+    "dueDate": "ప్రసవ తేదీ",
+    "quickActions": "శీఘ్ర చర్యలు",
+    "askAI": "AI అడగండి",
+    "pregnancySummary": "గర్భకాల సారాంశం",
+    "babyDevelopment": "శిశు అభివృద్ధి",
+    "weeksLeft": "వారాలు మిగిలాయి",
+    "checkInComplete": "ఈరోజు తనిఖీ ✓",
+    "tapToReport": "ఈరోజు రిపోర్ట్ చేయడానికి నొక్కండి",
+    "aiHealthInsights": "AI ఆరోగ్య అంతర్దృష్టులు",
+    "currentRiskScore": "ప్రస్తుత రిస్క్ స్కోర్",
+    "upcomingActions": "రాబోయే చర్యలు",
+    "monthlyCheckinCalendar": "నెలవారీ తనిఖీ క్యాలెండర్",
+    "improving": "మెరుగవుతోంది ↓",
+    "worsening": "పెరుగుతోంది ↑",
+    "stable": "స్థిరంగా →"
+  },
+  "journey": {
+    "title": "గర్భకాల ప్రయాణం",
+    "weeksAlong": "వారాలు గడిచాయి",
+    "weeksLeft": "వారాలు మిగిలాయి",
+    "noReportSubmitted": "నివేదిక సమర్పించబడలేదు",
+    "symptomsReported": "నివేదించిన లక్షణాలు",
+    "medicines": "మందులు",
+    "hydration": "నీటి సేవనం",
+    "notes": "నోట్స్",
+    "aiRecommendation": "AI సిఫారసు",
+    "daysTracked": "ట్రాక్ చేసిన రోజులు",
+    "weekDays": [
+      "ఆది",
+      "సోమ",
+      "మంగ",
+      "బుధ",
+      "గురు",
+      "శుక్ర",
+      "శని"
+    ],
+    "trimester1": {
+      "label": "మొదటి త్రైమాసికం",
+      "weeks": "1–12",
+      "description": "అన్ని ప్రధాన అవయవాల ఏర్పాటు."
+    },
+    "trimester2": {
+      "label": "రెండవ త్రైమాసికం",
+      "weeks": "13–27",
+      "description": "శిశువు వేగంగా పెరుగుతుంది."
+    },
+    "trimester3": {
+      "label": "మూడవ త్రైమాసికం",
+      "weeks": "28–40",
+      "description": "చివరి దశ. ప్రసవానికి సిద్ధంగా ఉండండి."
+    },
+    "legend": {
+      "lowRisk": "తక్కువ ప్రమాదం",
+      "mediumRisk": "మధ్యస్థ ప్రమాదం",
+      "highRisk": "అధిక ప్రమాదం",
+      "missed": "మిస్ అయింది",
+      "appointment": "అపాయింట్‌మెంట్",
+      "milestone": "మైలురాయి"
+    }
+  },
+  "checkin": {
+    "title": "దైనందిన ఆరోగ్య తనిఖీ",
+    "howFeeling": "ఈరోజు మీకు ఎలా అనిపిస్తోంది?",
+    "selectAllSymptoms": "ఈరోజు మీకు ఉన్న అన్ని లక్షణాలను ఎంచుకోండి:",
+    "continueToVitals": "వైటల్స్‌కు కొనసాగండి",
+    "analyzeWithAI": "AI తో విశ్లేషించండి",
+    "analyzing": "విశ్లేషిస్తోంది…",
+    "newCheckin": "+ కొత్త తనిఖీ ప్రారంభించండి",
+    "inputModes": {
+      "chips": "త్వరిత ఎంపిక",
+      "voice": "వాయిస్",
+      "text": "టైప్"
+    },
+    "symptoms_list": {
+      "headache": "తలనొప్పి",
+      "fever": "జ్వరం",
+      "bleeding": "రక్తస్రావం",
+      "dizziness": "తలతిరుగుట",
+      "swelling": "వాపు",
+      "reduced_fm": "శిశు కదలిక తగ్గింది",
+      "vomiting": "వాంతి / వికారం",
+      "high_bp": "అధిక రక్తపోటు",
+      "ab_pain": "పొట్ట నొప్పి",
+      "fatigue": "అలసట",
+      "vision": "మసక దృష్టి",
+      "no_symptoms": "ఈరోజు లక్షణాలు లేవు"
+    },
+    "moods": {
+      "great": "చాలా బాగా",
+      "good": "బాగా",
+      "okay": "సరిగ్గా",
+      "poor": "చెడ్డగా",
+      "bad": "చాలా చెడ్డగా"
+    }
+  },
+  "assistant": {
+    "title": "AI మాతృ ఆరోగ్య సహాయకుడు",
+    "placeholder": "లక్షణాలు, పోషణ, అపాయింట్‌మెంట్‌ల గురించి అడగండి...",
+    "notMedicalAdvice": "ఇది వైద్య సలహా కాదు. తీవ్రమైన లక్షణాలకు డాక్టర్‌ని సంప్రదించండి.",
+    "greeting": "నమస్కారం! నేను మీ MaaRaksha AI ఆరోగ్య సహాయకుడిని. గర్భకాల లక్షణాలు, పోషణ, సహాయం ఎప్పుడు తీసుకోవాలి అని అడగండి.",
+    "quickTopics": {
+      "symptoms": "లక్షణాలు",
+      "nutrition": "పోషణ",
+      "emergency": "అత్యవసరం",
+      "medicines": "మందులు",
+      "hydration": "నీరు",
+      "asha": "ASHA"
+    }
+  },
+  "notifications": {
+    "title": "నోటిఫికేషన్ కేంద్రం",
+    "empty": "ఇంకా నోటిఫికేషన్‌లు లేవు",
+    "markAllRead": "అన్నింటినీ చదివినట్లు గుర్తించు"
+  },
+  "login": {
+    "welcome": "MaaRaksha కు స్వాగతం",
+    "subtitle": "సైన్ ఇన్ చేయండి లేదా డెమో ప్రయత్నించండి",
+    "signIn": "సైన్ ইন్",
+    "orTryDemo": "లేదా డెమో ప్రయత్నించండి",
+    "emailPlaceholder": "ఇమెయిల్",
+    "passwordPlaceholder": "పాస్‌వర్డ్ (demo123)",
+    "roles": {
+      "woman": {
+        "label": "గర్భిణీ స్త్రీ",
+        "desc": "వాయిస్ రిపోర్ట్, ప్రయాణం, SOS"
+      },
+      "asha": {
+        "label": "ASHA వర్కర్",
+        "desc": "ప్రాధాన్యత డాష్‌బోర్డ్"
+      },
+      "family": {
+        "label": "కుటుంబ సభ్యుడు",
+        "desc": "అలర్ట్‌లు & ఆరోగ్య అప్‌డేట్‌లు"
+      },
+      "phc": {
+        "label": "PHC అడ్మిన్",
+        "desc": "క్లినికల్ నివేదికలు"
+      },
+      "district": {
+        "label": "జిల్లా అధికారి",
+        "desc": "జనాభా పర్యవేక్షణ"
+      }
+    }
+  },
+  "onboarding": {
+    "welcome": "మీ ఆరోగ్య ప్రొఫైల్ సెటప్ చేద్దాం",
+    "step1Title": "మీ గురించి",
+    "step2Title": "మీ గర్భకాలం",
+    "step3Title": "ఆరోగ్య వివరాలు",
+    "step4Title": "లక్షణాలు & నివేదికలు",
+    "yourName": "మీ పేరు",
+    "yourAge": "మీ వయసు",
+    "pregnancyMonth": "మీరు గర్భావస్థలో ఏ నెలలో ఉన్నారు?",
+    "month": "నెల",
+    "yourWeight": "మీ ప్రస్తుత బరువు",
+    "startJourney": "విశ్లేషించి ప్రయాణం ప్రారంభించు"
+  },
+  "pregnancyCard": {
+    "week": "వారం",
+    "score": "స్కోర్",
+    "trimester": "త్రైమాసికం",
+    "lastReport": "చివరి నివేదిక:"
+  },
+  "asha": {
+    "dashboardTitle": "ASHA వర్కర్ డాష్‌బోర్డ్",
+    "totalPregnancies": "మొత్తం గర్భాలు",
+    "priorityDashboard": "ప్రాధాన్యత డాష్‌బోర్డ్",
+    "searchPlaceholder": "పేరు లేదా గ్రామం ద్వారా వెతకండి..."
+  },
+  "family": {
+    "dashboardTitle": "కుటుంబ డాష్‌బోర్డ్",
+    "currentRisk": "ప్రస్తుత ప్రమాదం:"
+  },
+  "district": {
+    "dashboardTitle": "జిల్లా అధికారి డాష్‌బోర్డ్",
+    "activePregnancies": "సక్రియ గర్భాలు"
+  },
+  "phc": {
+    "dashboardTitle": "PHC అడ్మిన్ డాష్‌బోర్డ్",
+    "totalPatients": "మొత్తం రోగులు"
+  },
+  "knowledge": {
+    "keyActions": "ఈ వారం ముఖ్యమైన చర్యలు:",
+    "youAreHere": "మీరు ఇక్కడ ఉన్నారు",
+    "title": "నాలెడ్జ్ హబ్",
+    "weekGuide": "వార గైడ్",
+    "warningSigns": "హెచ్చరిక సంకేతాలు",
+    "seekHelp": "ఇవి అనుభవిస్తే వెంటనే సహాయం తీసుకోండి:",
+    "emergency": "🚨 అత్యవసరం",
+    "urgent": "⚠️ అర్జెంట్",
+    "whenInDoubt": "సందేహం ఉంటే, ASHA వర్కర్‌ని సంప్రదించండి.",
+    "education": "గర్భకాల విద్య",
+    "subtitle": "ఆరోగ్యకరమైన గర్భకాలానికి వారానికొకసారి మార్గదర్శకత్వం · వారం {{week}}"
+  }
+}

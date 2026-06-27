@@ -1,0 +1,55 @@
+<svg viewBox="0 0 240 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow28" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#fce7f3" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fdf2f8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="body28" x1="30%" y1="15%" x2="70%" y2="85%">
+      <stop offset="0%" stop-color="#fde0c0"/>
+      <stop offset="100%" stop-color="#f0a860"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="120" cy="170" rx="108" ry="135" fill="url(#glow28)" opacity="0.45"/>
+  <ellipse cx="120" cy="175" rx="90" ry="118" fill="none" stroke="#f9a8d4" stroke-width="1" stroke-dasharray="5 3" opacity="0.28"/>
+  <!-- Torso — well-proportioned at W28 (~37cm, 1.1kg) -->
+  <path d="M120 120 C96 124 80 146 80 172 C80 198 94 222 108 232 C113 235 127 235 132 232 C146 222 160 198 160 172 C160 146 144 124 120 120Z" fill="url(#body28)"/>
+  <!-- Head — more proportionate -->
+  <ellipse cx="120" cy="100" rx="34" ry="32" fill="#fde0c0"/>
+  <ellipse cx="120" cy="97" rx="27" ry="25" fill="#fdd0a0" opacity="0.3"/>
+  <!-- Facial features — more defined -->
+  <ellipse cx="108" cy="99" rx="6" ry="5.5" fill="#c87030" opacity="0.5"/>
+  <ellipse cx="132" cy="99" rx="6" ry="5.5" fill="#c87030" opacity="0.5"/>
+  <!-- Eyelids -->
+  <path d="M103 99 Q108 96 113 99" stroke="#c87030" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <path d="M127 99 Q132 96 137 99" stroke="#c87030" stroke-width="1.5" fill="none" opacity="0.6"/>
+  <!-- Nose -->
+  <path d="M116 110 Q120 114 124 110" stroke="#c87030" stroke-width="2" fill="none" opacity="0.45" stroke-linecap="round"/>
+  <!-- Lips -->
+  <path d="M112 118 Q120 124 128 118" stroke="#c87030" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+  <!-- Ears -->
+  <ellipse cx="86" cy="102" rx="6" ry="8" fill="#fdd8a0"/>
+  <path d="M89 98 Q91 102 89 106" stroke="#f0a860" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <ellipse cx="154" cy="102" rx="6" ry="8" fill="#fdd8a0"/>
+  <path d="M151 98 Q149 102 151 106" stroke="#f0a860" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <!-- Hair subtle -->
+  <path d="M88 88 Q90 76 120 78 Q150 76 152 88" fill="#e8a060" opacity="0.35"/>
+  <!-- Arms — elbows bent, hands near face -->
+  <path d="M81 155 C66 150 56 157 52 167 C50 173 52 178 56 180" stroke="#f0a860" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <path d="M56 180 C58 184 62 185 65 183" stroke="#f0a860" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <!-- Fingers -->
+  <path d="M52 168 C49 165 49 162 52 161" stroke="#f0a860" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M159 155 C174 150 184 157 188 167 C190 173 188 178 184 180" stroke="#f0a860" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <path d="M184 180 C182 184 178 185 175 183" stroke="#f0a860" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <!-- Legs — knees bent (fetal position) -->
+  <path d="M102 228 C94 244 88 256 85 268" stroke="#f0a860" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M85 268 C87 278 92 282 97 280" stroke="#f0a860" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <!-- Foot -->
+  <ellipse cx="96" cy="281" rx="12" ry="7" fill="#fde0c0"/>
+  <path d="M138 228 C146 244 152 256 155 268" stroke="#f0a860" stroke-width="12" stroke-linecap="round" fill="none"/>
+  <path d="M155 268 C153 278 148 282 143 280" stroke="#f0a860" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <ellipse cx="144" cy="281" rx="12" ry="7" fill="#fde0c0"/>
+  <!-- Umbilical cord -->
+  <path d="M120 232 C119 244 117 254 116 264" stroke="#f9a8d4" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <text x="120" y="300" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#be185d" opacity="0.8">Week 28</text>
+  <text x="120" y="314" text-anchor="middle" font-family="system-ui" font-size="9" fill="#9ca3af">~37.6 cm · 1.1 kg</text>
+</svg>

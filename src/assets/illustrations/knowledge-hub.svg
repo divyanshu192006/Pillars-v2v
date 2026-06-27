@@ -1,0 +1,45 @@
+<svg viewBox="0 0 400 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- BG -->
+  <ellipse cx="320" cy="50" rx="70" ry="60" fill="#ede9fe" opacity="0.6"/>
+  <ellipse cx="80" cy="210" rx="60" ry="50" fill="#fdf2f8" opacity="0.7"/>
+  <!-- Open book base -->
+  <path d="M80 220 L200 195 L320 220 L320 100 L200 75 L80 100 Z" fill="#f3f4f6"/>
+  <!-- Left page -->
+  <path d="M80 100 L200 75 L200 195 L80 220 Z" fill="white" stroke="#e5e7eb" stroke-width="1.5"/>
+  <!-- Right page -->
+  <path d="M200 75 L320 100 L320 220 L200 195 Z" fill="#fdf2f8" stroke="#e5e7eb" stroke-width="1.5"/>
+  <!-- Spine -->
+  <path d="M200 75 L200 195" stroke="#e879f9" stroke-width="3" stroke-linecap="round"/>
+  <!-- Left page content — week lines -->
+  <rect x="105" y="110" width="70" height="6" rx="3" fill="#e5e7eb"/>
+  <rect x="105" y="122" width="55" height="6" rx="3" fill="#fce7f3"/>
+  <rect x="105" y="134" width="65" height="6" rx="3" fill="#e5e7eb"/>
+  <rect x="105" y="146" width="50" height="6" rx="3" fill="#e5e7eb"/>
+  <rect x="105" y="158" width="60" height="6" rx="3" fill="#fce7f3"/>
+  <rect x="105" y="170" width="45" height="6" rx="3" fill="#e5e7eb"/>
+  <!-- Week number badge left -->
+  <circle cx="118" cy="103" r="12" fill="#a78bfa"/>
+  <text x="118" y="107" text-anchor="middle" font-size="9" font-weight="700" fill="white">W20</text>
+  <!-- Right page content -->
+  <circle cx="248" cy="120" r="28" fill="#fce7f3"/>
+  <text x="248" y="128" text-anchor="middle" font-size="26">👶</text>
+  <!-- Right page text lines -->
+  <rect x="218" y="155" width="75" height="6" rx="3" fill="#fbcfe8"/>
+  <rect x="225" y="167" width="60" height="6" rx="3" fill="#e5e7eb"/>
+  <rect x="220" y="179" width="70" height="6" rx="3" fill="#e5e7eb"/>
+  <!-- Warning badge on right -->
+  <rect x="264" y="103" width="42" height="16" rx="8" fill="#fef3c7"/>
+  <text x="285" y="114" text-anchor="middle" font-size="8" font-weight="700" fill="#92400e">⚠ Week 20</text>
+  <!-- Floating week bubbles -->
+  <circle cx="45" cy="120" r="22" fill="#ede9fe"/>
+  <text x="45" y="116" text-anchor="middle" font-size="10" font-weight="700" fill="#7c3aed">Week</text>
+  <text x="45" y="130" text-anchor="middle" font-size="14" font-weight="800" fill="#7c3aed">12</text>
+  <circle cx="355" cy="170" r="20" fill="#fce7f3"/>
+  <text x="355" y="166" text-anchor="middle" font-size="10" font-weight="700" fill="#be185d">Week</text>
+  <text x="355" y="180" text-anchor="middle" font-size="14" font-weight="800" fill="#be185d">28</text>
+  <!-- Top decorative elements -->
+  <path d="M155 45 C155 40 160 35 165 40 C170 35 175 40 175 45 C175 51 165 58 165 58 C165 58 155 51 155 45Z" fill="#f472b6" opacity="0.8"/>
+  <path d="M225 30 C225 26 229 22 233 26 C237 22 241 26 241 30 C241 35 233 41 233 41 C233 41 225 35 225 30Z" fill="#a78bfa" opacity="0.7"/>
+  <circle cx="340" cy="240" r="4" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="70" cy="60" r="3.5" fill="#f472b6" opacity="0.6"/>
+</svg>

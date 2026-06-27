@@ -1,0 +1,38 @@
+<svg viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- BG blobs -->
+  <ellipse cx="340" cy="40" rx="75" ry="60" fill="#fdf2f8" opacity="0.8"/>
+  <ellipse cx="60" cy="200" rx="55" ry="45" fill="#ede9fe" opacity="0.6"/>
+  <!-- Timeline path -->
+  <path d="M40 180 Q100 60 200 120 Q300 180 360 80" stroke="#f9a8d4" stroke-width="4" stroke-dasharray="8 5" fill="none" stroke-linecap="round"/>
+  <!-- T1 circle + baby -->
+  <circle cx="60" cy="175" r="32" fill="#ede9fe"/>
+  <circle cx="60" cy="175" r="26" fill="#ddd6fe"/>
+  <text x="60" y="181" text-anchor="middle" font-size="22" fill="#7c3aed">🌱</text>
+  <text x="60" y="200" text-anchor="middle" font-size="9" font-weight="600" fill="#7c3aed">Week 1–12</text>
+  <!-- T2 circle + baby -->
+  <circle cx="200" cy="118" r="36" fill="#fce7f3"/>
+  <circle cx="200" cy="118" r="30" fill="#fbcfe8"/>
+  <text x="200" y="125" text-anchor="middle" font-size="26" fill="#ec4899">🌸</text>
+  <text x="200" y="147" text-anchor="middle" font-size="9" font-weight="600" fill="#be185d">Week 13–27</text>
+  <!-- T3 circle + baby -->
+  <circle cx="348" cy="85" r="40" fill="#fff7ed"/>
+  <circle cx="348" cy="85" r="33" fill="#fed7aa"/>
+  <text x="348" y="93" text-anchor="middle" font-size="30" fill="#f97316">✨</text>
+  <text x="348" y="117" text-anchor="middle" font-size="9" font-weight="600" fill="#c2410c">Week 28–40</text>
+  <!-- Labels -->
+  <rect x="28" y="210" width="66" height="18" rx="9" fill="#7c3aed" opacity="0.15"/>
+  <text x="61" y="222" text-anchor="middle" font-size="8" font-weight="700" fill="#7c3aed">1st Trimester</text>
+  <rect x="168" y="152" width="66" height="18" rx="9" fill="#ec4899" opacity="0.15"/>
+  <text x="201" y="164" text-anchor="middle" font-size="8" font-weight="700" fill="#ec4899">2nd Trimester</text>
+  <rect x="316" y="122" width="66" height="18" rx="9" fill="#f97316" opacity="0.15"/>
+  <text x="349" y="134" text-anchor="middle" font-size="8" font-weight="700" fill="#f97316">3rd Trimester</text>
+  <!-- Sparkles -->
+  <circle cx="130" cy="95" r="3" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="275" cy="155" r="2.5" fill="#a78bfa" opacity="0.7"/>
+  <circle cx="170" cy="50" r="2" fill="#f472b6" opacity="0.6"/>
+  <!-- Milestone dots on path -->
+  <circle cx="110" cy="143" r="5" fill="#f472b6"/>
+  <circle cx="150" cy="128" r="5" fill="#f472b6"/>
+  <circle cx="248" cy="138" r="5" fill="#f97316"/>
+  <circle cx="298" cy="115" r="5" fill="#f97316"/>
+</svg>

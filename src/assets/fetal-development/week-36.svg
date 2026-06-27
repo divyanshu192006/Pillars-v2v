@@ -1,0 +1,59 @@
+<svg viewBox="0 0 260 340" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow36" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#fce7f3" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#fdf2f8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="body36" x1="25%" y1="10%" x2="75%" y2="90%">
+      <stop offset="0%" stop-color="#fdd8b0"/>
+      <stop offset="100%" stop-color="#e89848"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="130" cy="185" rx="118" ry="148" fill="url(#glow36)" opacity="0.4"/>
+  <ellipse cx="130" cy="190" rx="100" ry="130" fill="none" stroke="#f9a8d4" stroke-width="1" stroke-dasharray="5 3" opacity="0.25"/>
+  <!-- Full-term torso — rounded, fat deposits visible (~47cm, 2.6kg) -->
+  <path d="M130 128 C102 132 84 158 84 188 C84 218 100 246 118 258 C123 261 137 261 142 258 C160 246 176 218 176 188 C176 158 158 132 130 128Z" fill="url(#body36)"/>
+  <!-- Rounder cheeks — fat deposits -->
+  <ellipse cx="130" cy="107" rx="38" ry="36" fill="#fdd8b0"/>
+  <ellipse cx="113" cy="110" rx="10" ry="8" fill="#f9c890" opacity="0.4"/>
+  <ellipse cx="147" cy="110" rx="10" ry="8" fill="#f9c890" opacity="0.4"/>
+  <!-- Eyes — more defined, can open -->
+  <ellipse cx="117" cy="105" rx="6.5" ry="6" fill="#2d3748"/>
+  <ellipse cx="143" cy="105" rx="6.5" ry="6" fill="#2d3748"/>
+  <circle cx="118.5" cy="103.5" r="2" fill="white"/>
+  <circle cx="144.5" cy="103.5" r="2" fill="white"/>
+  <!-- Lashes hint -->
+  <path d="M111 101 Q117 98 123 101" stroke="#2d3748" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <path d="M137 101 Q143 98 149 101" stroke="#2d3748" stroke-width="1.5" fill="none" opacity="0.7"/>
+  <!-- Nose -->
+  <ellipse cx="130" cy="116" rx="5" ry="3.5" fill="#c87830" opacity="0.4"/>
+  <!-- Lips -->
+  <path d="M122 126 C126 122 134 122 138 126" stroke="#c87830" stroke-width="2" fill="none" opacity="0.5" stroke-linecap="round"/>
+  <path d="M122 126 Q130 131 138 126" stroke="#c87830" stroke-width="2" fill="none" opacity="0.35" stroke-linecap="round"/>
+  <!-- Ears -->
+  <ellipse cx="92" cy="108" rx="7" ry="9.5" fill="#fdc890"/>
+  <path d="M96 102 Q99 108 96 114" stroke="#e89848" stroke-width="2" fill="none" opacity="0.5"/>
+  <ellipse cx="168" cy="108" rx="7" ry="9.5" fill="#fdc890"/>
+  <path d="M164 102 Q161 108 164 114" stroke="#e89848" stroke-width="2" fill="none" opacity="0.5"/>
+  <!-- Hair -->
+  <path d="M94 92 Q97 76 130 80 Q163 76 166 92" fill="#c87830" opacity="0.3"/>
+  <!-- Arms — elbows bent, more defined hands -->
+  <path d="M85 166 C68 160 56 170 52 182 C50 190 53 196 58 198" stroke="#e89848" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M58 198 C62 204 68 206 72 202" stroke="#e89848" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <!-- Thumb -->
+  <path d="M72 202 C75 198 76 194 73 192" stroke="#e89848" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <path d="M175 166 C192 160 204 170 208 182 C210 190 207 196 202 198" stroke="#e89848" stroke-width="13" stroke-linecap="round" fill="none"/>
+  <path d="M202 198 C198 204 192 206 188 202" stroke="#e89848" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M188 202 C185 198 184 194 187 192" stroke="#e89848" stroke-width="4" stroke-linecap="round" fill="none"/>
+  <!-- Legs — knees bent, head-down position -->
+  <path d="M110 254 C100 272 95 288 93 302" stroke="#e89848" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M93 302 C95 314 102 318 108 315" stroke="#e89848" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <ellipse cx="107" cy="316" rx="14" ry="8.5" fill="#fdd8b0"/>
+  <path d="M150 254 C160 272 165 288 167 302" stroke="#e89848" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <path d="M167 302 C165 314 158 318 152 315" stroke="#e89848" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <ellipse cx="153" cy="316" rx="14" ry="8.5" fill="#fdd8b0"/>
+  <!-- Umbilical cord -->
+  <path d="M130 258 C129 272 127 282 126 292" stroke="#f9a8d4" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.38"/>
+  <text x="130" y="332" text-anchor="middle" font-family="system-ui" font-size="12" font-weight="600" fill="#be185d" opacity="0.8">Week 36</text>
+  <text x="130" y="336" text-anchor="middle" font-family="system-ui" font-size="0" fill="#9ca3af">~47 cm · 2.6 kg</text>
+</svg>

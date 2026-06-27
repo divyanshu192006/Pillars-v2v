@@ -1,0 +1,274 @@
+{
+  "appName": "माँरक्षा",
+  "tagline": "AI-चलित माता आरोग्य प्रारंभिक इशारा नेटवर्क",
+  "demoMode": "डेमो मोड",
+  "nav": {
+    "home": "मुखपृष्ठ",
+    "voiceReport": "आवाज अहवाल",
+    "dailyCheckin": "दैनिक तपासणी",
+    "journey": "गर्भावस्था प्रवास",
+    "appointments": "भेटी",
+    "medicines": "औषधे",
+    "assistant": "AI सहायक",
+    "reports": "आरोग्य अहवाल",
+    "notifications": "सूचना",
+    "dashboard": "डॅशबोर्ड",
+    "dailyHealth": "दैनिक आरोग्य",
+    "aiRiskForecast": "AI जोखीम अंदाज",
+    "healthTwin": "आरोग्य जुळा",
+    "knowledgeHub": "ज्ञान केंद्र",
+    "nutritionPlanner": "पोषण नियोजक",
+    "medicalCenter": "वैद्यकीय केंद्र",
+    "emergencyHospitals": "आपत्कालीन व रुग्णालये",
+    "findHospital": "रुग्णालय शोधा"
+  },
+  "common": {
+    "week": "आठवडा",
+    "score": "गुण",
+    "trimester": "तिमाही",
+    "today": "आज",
+    "loading": "लोड होत आहे...",
+    "save": "जतन करा",
+    "cancel": "रद्द करा",
+    "back": "मागे",
+    "refresh": "ताजे करा",
+    "yes": "होय",
+    "no": "नाही",
+    "current": "सद्य",
+    "viewDetails": "तपशील पहा",
+    "submit": "सादर करा",
+    "close": "बंद करा",
+    "getStarted": "सुरू करा",
+    "high": "उच्च",
+    "medium": "मध्यम",
+    "low": "कमी",
+    "total": "एकूण"
+  },
+  "risk": {
+    "green": "कमी धोका",
+    "yellow": "मध्यम धोका",
+    "red": "उच्च धोका",
+    "assessment": "धोका मूल्यांकन",
+    "score": "गुण"
+  },
+  "sos": {
+    "button": "आपत्कालीन SOS — मदतीसाठी दाबा",
+    "tapToSend": "आपत्कालीन इशारा पाठवण्यासाठी दाबा",
+    "alertSent": "✓ ASHA व कुटुंबाला इशारा पाठवला",
+    "emergency": "आपत्कालीन",
+    "goToHospital": "🚨 ताबडतोब रुग्णालयात जा जर:",
+    "warningSigns": [
+      "कोणत्याही प्रमाणात योनीतून रक्तस्राव",
+      "12+ तास बाळाची हालचाल नाही",
+      "तीव्र डोकेदुखी + धूसर दृष्टी + सूज",
+      "तीव्र पोटदुखी",
+      "पाणी सुटणे / द्रव गळणे",
+      "झटके / आकडी"
+    ],
+    "sent": "पाठवले",
+    "urgentAction": "तत्काल कार्रवाई आवश्यक",
+    "urgentDesc": "ASHA कार्यकर्त्याशी संपर्क करा किंवा PHC ला जा. उशीर करू नका.",
+    "recentAlerts": "अलीकडील इशारे",
+    "alert": "इशारा",
+    "alertActive": "आपत्कालीन इशारा सक्रिय",
+    "ensureCare": "कृपया {{name}} ला त्वरित वैद्यकीय काळजी मिळेल याची खात्री करा."
+  },
+  "woman": {
+    "dashboardTitle": "माझा आरोग्य डॅशबोर्ड",
+    "welcomeBack": "पुन्हा स्वागत आहे,",
+    "gestationalWeek": "गर्भधारणेचा आठवडा",
+    "dueDate": "प्रसूती तारीख",
+    "quickActions": "त्वरित कृती",
+    "askAI": "AI विचारा",
+    "pregnancySummary": "गर्भावस्था सारांश",
+    "babyDevelopment": "बाळाचा विकास",
+    "weeksLeft": "आठवडे शिल्लक",
+    "checkInComplete": "आजची तपासणी ✓",
+    "tapToReport": "आज अहवाल करण्यासाठी दाबा",
+    "aiHealthInsights": "AI आरोग्य माहिती",
+    "currentRiskScore": "सद्य धोका गुण",
+    "upcomingActions": "येणाऱ्या कृती व कार्यक्रम",
+    "monthlyCheckinCalendar": "मासिक तपासणी दिनदर्शिका",
+    "improving": "सुधारत आहे ↓",
+    "worsening": "वाढत आहे ↑",
+    "stable": "स्थिर →"
+  },
+  "journey": {
+    "title": "गर्भावस्था प्रवास",
+    "weeksAlong": "आठवडे झाले",
+    "weeksLeft": "आठवडे शिल्लक",
+    "noReportSubmitted": "अहवाल सादर नाही",
+    "symptomsReported": "नोंदवलेली लक्षणे",
+    "medicines": "औषधे",
+    "hydration": "पाण्याचे सेवन",
+    "notes": "नोट्स",
+    "aiRecommendation": "AI शिफारस",
+    "daysTracked": "नोंदवलेले दिवस",
+    "weekDays": [
+      "रवि",
+      "सोम",
+      "मंगळ",
+      "बुध",
+      "गुरु",
+      "शुक्र",
+      "शनि"
+    ],
+    "trimester1": {
+      "label": "पहिली तिमाही",
+      "weeks": "1–12",
+      "description": "सर्व प्रमुख अवयवांची निर्मिती."
+    },
+    "trimester2": {
+      "label": "दुसरी तिमाही",
+      "weeks": "13–27",
+      "description": "बाळ वेगाने वाढते."
+    },
+    "trimester3": {
+      "label": "तिसरी तिमाही",
+      "weeks": "28–40",
+      "description": "अंतिम टप्पा. प्रसूतीसाठी तयारी करा."
+    },
+    "legend": {
+      "lowRisk": "कमी धोका",
+      "mediumRisk": "मध्यम धोका",
+      "highRisk": "उच्च धोका",
+      "missed": "चुकले",
+      "appointment": "भेट",
+      "milestone": "टप्पा"
+    }
+  },
+  "checkin": {
+    "title": "दैनिक आरोग्य तपासणी",
+    "howFeeling": "आज तुम्हाला कसे वाटत आहे?",
+    "selectAllSymptoms": "आज असलेली सर्व लक्षणे निवडा:",
+    "continueToVitals": "महत्त्वाच्या मापदंडांकडे जा",
+    "analyzeWithAI": "AI सह विश्लेषण करा",
+    "analyzing": "विश्लेषण होत आहे…",
+    "newCheckin": "+ नवीन तपासणी सुरू करा",
+    "inputModes": {
+      "chips": "त्वरित निवड",
+      "voice": "आवाज",
+      "text": "टाइप करा"
+    },
+    "symptoms_list": {
+      "headache": "डोकेदुखी",
+      "fever": "ताप",
+      "bleeding": "रक्तस्राव",
+      "dizziness": "चक्कर येणे",
+      "swelling": "सूज",
+      "reduced_fm": "बाळाची हालचाल कमी",
+      "vomiting": "उलटी / मळमळ",
+      "high_bp": "उच्च रक्तदाब",
+      "ab_pain": "पोटदुखी",
+      "fatigue": "थकवा",
+      "vision": "धूसर दृष्टी",
+      "no_symptoms": "आज कोणतीही लक्षणे नाहीत"
+    },
+    "moods": {
+      "great": "खूप छान",
+      "good": "छान",
+      "okay": "ठीक",
+      "poor": "वाईट",
+      "bad": "खूप वाईट"
+    }
+  },
+  "assistant": {
+    "title": "AI माता आरोग्य सहायक",
+    "placeholder": "लक्षणे, पोषण, भेटींबद्दल विचारा...",
+    "notMedicalAdvice": "हे वैद्यकीय सल्ला नाही. गंभीर लक्षणांसाठी डॉक्टरांशी संपर्क करा.",
+    "greeting": "नमस्कार! मी तुमचा MaaRaksha AI आरोग्य सहायक आहे. गर्भावस्थेतील लक्षणे, पोषण, मदत कधी घ्यावी याबद्दल विचारा.",
+    "quickTopics": {
+      "symptoms": "लक्षणे",
+      "nutrition": "पोषण",
+      "emergency": "आपत्कालीन",
+      "medicines": "औषधे",
+      "hydration": "पाणी",
+      "asha": "ASHA"
+    }
+  },
+  "notifications": {
+    "title": "सूचना केंद्र",
+    "empty": "अद्याप सूचना नाहीत",
+    "markAllRead": "सर्व वाचले म्हणून चिन्हांकित करा"
+  },
+  "login": {
+    "welcome": "MaaRaksha मध्ये आपले स्वागत आहे",
+    "subtitle": "साइन इन करा किंवा डेमो वापरून पहा",
+    "signIn": "साइन इन",
+    "orTryDemo": "किंवा डेमो वापरून पहा",
+    "emailPlaceholder": "ईमेल",
+    "passwordPlaceholder": "पासवर्ड (demo123)",
+    "roles": {
+      "woman": {
+        "label": "गर्भवती महिला",
+        "desc": "आवाज अहवाल, प्रवास, SOS"
+      },
+      "asha": {
+        "label": "ASHA कार्यकर्ता",
+        "desc": "प्राधान्य डॅशबोर्ड"
+      },
+      "family": {
+        "label": "कुटुंब सदस्य",
+        "desc": "इशारे व आरोग्य अपडेट"
+      },
+      "phc": {
+        "label": "PHC प्रशासक",
+        "desc": "वैद्यकीय अहवाल"
+      },
+      "district": {
+        "label": "जिल्हाधिकारी",
+        "desc": "लोकसंख्या देखरेख"
+      }
+    }
+  },
+  "onboarding": {
+    "welcome": "तुमची आरोग्य प्रोफाइल सेट करूया",
+    "step1Title": "तुमच्याबद्दल",
+    "step2Title": "तुमची गर्भावस्था",
+    "step3Title": "आरोग्य तपशील",
+    "step4Title": "लक्षणे आणि अहवाल",
+    "yourName": "तुमचे नाव",
+    "yourAge": "तुमचे वय",
+    "pregnancyMonth": "तुम्ही गर्भावस्थेच्या कोणत्या महिन्यात आहात?",
+    "month": "महिना",
+    "yourWeight": "तुमचे सद्य वजन",
+    "startJourney": "विश्लेषण करा आणि प्रवास सुरू करा"
+  },
+  "pregnancyCard": {
+    "week": "आठवडा",
+    "score": "गुण",
+    "trimester": "तिमाही",
+    "lastReport": "शेवटचा अहवाल:"
+  },
+  "asha": {
+    "dashboardTitle": "ASHA कार्यकर्ता डॅशबोर्ड",
+    "totalPregnancies": "एकूण गर्भधारणा",
+    "priorityDashboard": "प्राधान्य डॅशबोर्ड",
+    "searchPlaceholder": "नाव किंवा गावाने शोधा..."
+  },
+  "family": {
+    "dashboardTitle": "कुटुंब डॅशबोर्ड",
+    "currentRisk": "सद्य धोका:"
+  },
+  "district": {
+    "dashboardTitle": "जिल्हाधिकारी डॅशबोर्ड",
+    "activePregnancies": "सक्रिय गर्भधारणा"
+  },
+  "phc": {
+    "dashboardTitle": "PHC प्रशासक डॅशबोर्ड",
+    "totalPatients": "एकूण रुग्ण"
+  },
+  "knowledge": {
+    "keyActions": "या आठवड्यातील महत्त्वाच्या कृती:",
+    "youAreHere": "तुम्ही इथे आहात",
+    "title": "ज्ञान केंद्र",
+    "weekGuide": "आठवडा मार्गदर्शिका",
+    "warningSigns": "चेतावनी चिन्हे",
+    "seekHelp": "यापैकी काहीही अनुभवल्यास लगेच मदत घ्या:",
+    "emergency": "🚨 आपत्कालीन",
+    "urgent": "⚠️ तत्काल",
+    "whenInDoubt": "शंका असल्यास, ASHA कार्यकर्त्याशी संपर्क करा किंवा PHC ला जा.",
+    "education": "गर्भावस्था शिक्षण",
+    "subtitle": "निरोगी गर्भावस्थेसाठी आठवडाभराचे मार्गदर्शन · आठवडा {{week}}"
+  }
+}

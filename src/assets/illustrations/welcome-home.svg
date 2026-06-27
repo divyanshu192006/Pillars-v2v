@@ -1,0 +1,51 @@
+<svg viewBox="0 0 320 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- BG glow -->
+  <ellipse cx="250" cy="80" rx="80" ry="70" fill="#fce7f3" opacity="0.5"/>
+  <ellipse cx="70" cy="160" rx="60" ry="50" fill="#ede9fe" opacity="0.4"/>
+  <!-- Phone / device -->
+  <rect x="55" y="30" width="110" height="160" rx="16" fill="white" opacity="0.9"/>
+  <rect x="55" y="30" width="110" height="160" rx="16" fill="none" stroke="#f9a8d4" stroke-width="2"/>
+  <rect x="63" y="42" width="94" height="136" rx="10" fill="#fdf2f8"/>
+  <!-- Screen content lines -->
+  <rect x="72" y="52" width="60" height="8" rx="4" fill="#f9a8d4"/>
+  <rect x="72" y="65" width="75" height="5" rx="2.5" fill="#e5e7eb"/>
+  <rect x="72" y="75" width="55" height="5" rx="2.5" fill="#e5e7eb"/>
+  <!-- Risk badge on screen -->
+  <rect x="72" y="88" width="76" height="22" rx="11" fill="#fef3c7"/>
+  <text x="110" y="103" text-anchor="middle" font-size="9" font-weight="700" fill="#92400e">🟡 YELLOW Risk</text>
+  <!-- Chart on screen -->
+  <polyline points="72,148 84,140 96,142 108,132 120,134 132,122 144,126" stroke="#ec4899" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <rect x="72" y="118" width="76" height="36" rx="4" fill="none" stroke="#fce7f3" stroke-width="1"/>
+  <!-- Pregnant woman illustration small -->
+  <ellipse cx="240" cy="105" rx="30" ry="55" fill="#fce7f3" opacity="0.3"/>
+  <!-- Head -->
+  <ellipse cx="240" cy="65" rx="22" ry="23" fill="#fde68a"/>
+  <!-- Hair -->
+  <path d="M219 58 Q222 38 240 42 Q258 38 261 58" fill="#7c3aed"/>
+  <!-- Body -->
+  <ellipse cx="240" cy="115" rx="26" ry="38" fill="#ec4899" opacity="0.8"/>
+  <!-- Belly -->
+  <ellipse cx="245" cy="125" rx="18" ry="22" fill="#fce7f3" opacity="0.5"/>
+  <!-- Eyes -->
+  <ellipse cx="233" cy="64" rx="3" ry="3.5" fill="#374151"/>
+  <ellipse cx="247" cy="64" rx="3" ry="3.5" fill="#374151"/>
+  <circle cx="234" cy="63" r="1" fill="white"/>
+  <circle cx="248" cy="63" r="1" fill="white"/>
+  <!-- Smile -->
+  <path d="M235 73 Q240 78 245 73" stroke="#9d174d" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Neck -->
+  <rect x="233" y="84" width="14" height="12" rx="5" fill="#fde68a"/>
+  <!-- Arms -->
+  <path d="M214 108 Q200 120 198 135" stroke="#fde68a" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M266 108 Q278 118 278 132" stroke="#fde68a" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <!-- Legs -->
+  <path d="M226 148 Q222 168 218 182" stroke="#ec4899" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M254 148 Q258 168 262 182" stroke="#ec4899" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <!-- Hearts floating -->
+  <path d="M285 55 C285 52 288 49 291 52 C294 49 297 52 297 55 C297 59 291 64 291 64 C291 64 285 59 285 55Z" fill="#f472b6" opacity="0.8"/>
+  <path d="M190 45 C190 43 192.5 41 195 43 C197.5 41 200 43 200 45 C200 48 195 52 195 52 C195 52 190 48 190 45Z" fill="#a78bfa" opacity="0.7"/>
+  <!-- Stars -->
+  <circle cx="178" cy="80" r="3" fill="#fbbf24" opacity="0.7"/>
+  <circle cx="305" cy="130" r="2.5" fill="#fbbf24" opacity="0.6"/>
+  <circle cx="190" cy="170" r="2" fill="#f472b6" opacity="0.5"/>
+</svg>

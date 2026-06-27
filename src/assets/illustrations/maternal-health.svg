@@ -1,0 +1,55 @@
+<svg viewBox="0 0 420 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background blobs -->
+  <ellipse cx="340" cy="60" rx="80" ry="70" fill="#fce7f3" opacity="0.6"/>
+  <ellipse cx="80" cy="260" rx="70" ry="60" fill="#fdf2f8" opacity="0.7"/>
+  <!-- Ground -->
+  <ellipse cx="210" cy="300" rx="160" ry="16" fill="#f9a8d4" opacity="0.18"/>
+  <!-- Pregnant woman body -->
+  <ellipse cx="180" cy="195" rx="38" ry="50" fill="#fce7f3"/>
+  <ellipse cx="186" cy="200" rx="28" ry="35" fill="#f9a8d4" opacity="0.5"/>
+  <!-- Dress -->
+  <path d="M150 195 Q155 260 180 270 Q205 260 210 195" fill="#ec4899" opacity="0.85"/>
+  <path d="M150 195 Q155 265 180 272 Q205 265 210 195" fill="#f472b6" opacity="0.5"/>
+  <!-- Belly highlight -->
+  <ellipse cx="183" cy="232" rx="18" ry="22" fill="#fce7f3" opacity="0.6"/>
+  <!-- Neck -->
+  <rect x="172" y="155" width="16" height="18" rx="6" fill="#fde68a"/>
+  <!-- Head -->
+  <ellipse cx="180" cy="142" rx="26" ry="28" fill="#fde68a"/>
+  <!-- Hair -->
+  <path d="M155 135 Q160 100 180 105 Q200 100 205 135" fill="#7c3aed"/>
+  <path d="M154 138 Q150 160 155 175" stroke="#7c3aed" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <!-- Eyes -->
+  <ellipse cx="172" cy="140" rx="3.5" ry="4" fill="#374151"/>
+  <ellipse cx="188" cy="140" rx="3.5" ry="4" fill="#374151"/>
+  <circle cx="173" cy="139" r="1.2" fill="white"/>
+  <circle cx="189" cy="139" r="1.2" fill="white"/>
+  <!-- Smile -->
+  <path d="M174 151 Q180 157 186 151" stroke="#9d174d" stroke-width="2" stroke-linecap="round" fill="none"/>
+  <!-- Cheeks -->
+  <ellipse cx="167" cy="147" rx="5" ry="3.5" fill="#fca5a5" opacity="0.5"/>
+  <ellipse cx="193" cy="147" rx="5" ry="3.5" fill="#fca5a5" opacity="0.5"/>
+  <!-- Left arm down -->
+  <path d="M152 200 Q138 228 142 245" stroke="#fde68a" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <!-- Right arm up with heart -->
+  <path d="M208 200 Q224 185 228 170" stroke="#fde68a" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <!-- Legs -->
+  <path d="M162 268 Q158 290 155 302" stroke="#ec4899" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M198 268 Q202 290 205 302" stroke="#ec4899" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <!-- Shoes -->
+  <ellipse cx="153" cy="303" rx="12" ry="6" fill="#7c3aed"/>
+  <ellipse cx="207" cy="303" rx="12" ry="6" fill="#7c3aed"/>
+  <!-- Heart held up -->
+  <path d="M221 153 C221 148 226 143 232 148 C238 143 243 148 243 153 C243 160 232 170 232 170 C232 170 221 160 221 153Z" fill="#ec4899"/>
+  <!-- Floating hearts -->
+  <path d="M290 80 C290 77 293 74 296 77 C299 74 302 77 302 80 C302 84 296 89 296 89 C296 89 290 84 290 80Z" fill="#f472b6" opacity="0.7"/>
+  <path d="M60 120 C60 117 63 114 66 117 C69 114 72 117 72 120 C72 124 66 129 66 129 C66 129 60 124 60 120Z" fill="#a78bfa" opacity="0.6"/>
+  <path d="M320 180 C320 177.5 322.5 175 325 177.5 C327.5 175 330 177.5 330 180 C330 183 325 187 325 187 C325 187 320 183 320 180Z" fill="#ec4899" opacity="0.5"/>
+  <!-- Stars -->
+  <circle cx="95" cy="75" r="3" fill="#fbbf24" opacity="0.8"/>
+  <circle cx="350" cy="150" r="2.5" fill="#fbbf24" opacity="0.6"/>
+  <circle cx="270" cy="240" r="2" fill="#a78bfa" opacity="0.7"/>
+  <!-- Medical cross -->
+  <rect x="340" cy="220" x="335" y="215" width="20" height="6" rx="3" fill="#ec4899" opacity="0.4"/>
+  <rect x="341" y="209" width="6" height="20" rx="3" fill="#ec4899" opacity="0.4"/>
+</svg>

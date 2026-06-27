@@ -1,0 +1,45 @@
+<svg viewBox="0 0 220 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow20" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#fce7f3" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#fdf2f8" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="body20" x1="30%" y1="20%" x2="70%" y2="80%">
+      <stop offset="0%" stop-color="#fde8d0"/>
+      <stop offset="100%" stop-color="#f5b880"/>
+    </linearGradient>
+  </defs>
+  <ellipse cx="110" cy="160" rx="98" ry="125" fill="url(#glow20)" opacity="0.5"/>
+  <ellipse cx="110" cy="165" rx="82" ry="108" fill="none" stroke="#f9a8d4" stroke-width="1" stroke-dasharray="5 3" opacity="0.3"/>
+  <!-- Body — proportions improving, ~25cm, 300g -->
+  <path d="M110 115 C90 118 76 136 76 160 C76 184 88 206 100 216 C105 218 115 218 120 216 C132 206 144 184 144 160 C144 136 130 118 110 115Z" fill="url(#body20)"/>
+  <!-- Head — less disproportionate now -->
+  <ellipse cx="110" cy="98" rx="30" ry="28" fill="#fde8d0"/>
+  <ellipse cx="110" cy="95" rx="24" ry="22" fill="#fddbb8" opacity="0.35"/>
+  <!-- Face features -->
+  <ellipse cx="100" cy="97" rx="5" ry="4.5" fill="#d4854a" opacity="0.55"/>
+  <ellipse cx="120" cy="97" rx="5" ry="4.5" fill="#d4854a" opacity="0.55"/>
+  <!-- Nose -->
+  <ellipse cx="110" cy="107" rx="3.5" ry="2.5" fill="#d4854a" opacity="0.4"/>
+  <!-- Lips -->
+  <path d="M104 113 Q110 118 116 113" stroke="#d4854a" stroke-width="1.5" fill="none" opacity="0.5" stroke-linecap="round"/>
+  <!-- Ears -->
+  <ellipse cx="80" cy="100" rx="5" ry="6.5" fill="#fddbb8"/>
+  <ellipse cx="140" cy="100" rx="5" ry="6.5" fill="#fddbb8"/>
+  <!-- Arms raised — baby movement starts -->
+  <path d="M77 145 C62 140 54 147 50 155 C53 162 59 163 64 159" stroke="#f5b880" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <!-- Fingers hint -->
+  <path d="M50 155 C47 152 47 149 50 148" stroke="#f5b880" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <path d="M143 145 C158 140 166 147 170 155 C167 162 161 163 156 159" stroke="#f5b880" stroke-width="9" stroke-linecap="round" fill="none"/>
+  <path d="M170 155 C173 152 173 149 170 148" stroke="#f5b880" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <!-- Legs extended (kicking begins) -->
+  <path d="M94 213 C86 228 84 244 85 256" stroke="#f5b880" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <path d="M126 213 C134 228 136 244 135 256" stroke="#f5b880" stroke-width="10" stroke-linecap="round" fill="none"/>
+  <!-- Feet -->
+  <ellipse cx="85" cy="258" rx="10" ry="6" fill="#fde8d0"/>
+  <ellipse cx="135" cy="258" rx="10" ry="6" fill="#fde8d0"/>
+  <!-- Umbilical cord -->
+  <path d="M110 216 C109 226 107 234 106 242" stroke="#f9a8d4" stroke-width="3" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <text x="110" y="280" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#be185d" opacity="0.8">Week 20</text>
+  <text x="110" y="294" text-anchor="middle" font-family="system-ui" font-size="9" fill="#9ca3af">~25 cm · 300 g</text>
+</svg>

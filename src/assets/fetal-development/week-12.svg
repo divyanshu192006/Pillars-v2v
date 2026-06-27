@@ -1,0 +1,40 @@
+<svg viewBox="0 0 200 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="glow12" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fce7f3" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#fdf2f8" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="body12" cx="40%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#fde8d0"/>
+      <stop offset="100%" stop-color="#f9c9a0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="100" cy="150" rx="85" ry="110" fill="url(#glow12)" opacity="0.5"/>
+  <ellipse cx="100" cy="155" rx="72" ry="92" fill="none" stroke="#f9a8d4" stroke-width="1" stroke-dasharray="4 3" opacity="0.35"/>
+  <!-- Body — more distinct form at week 12 (~5.4cm) -->
+  <path d="M100 120 C82 124 72 140 74 162 C76 180 88 196 100 200 C112 196 124 180 126 162 C128 140 118 124 100 120Z" fill="url(#body12)"/>
+  <!-- Head — still large relative to body -->
+  <ellipse cx="100" cy="106" rx="26" ry="24" fill="#fde8d0"/>
+  <ellipse cx="100" cy="103" rx="21" ry="19" fill="#fddbb8" opacity="0.4"/>
+  <!-- Facial features beginning -->
+  <ellipse cx="91" cy="105" rx="4" ry="3.5" fill="#e8a060" opacity="0.6"/>
+  <ellipse cx="109" cy="105" rx="4" ry="3.5" fill="#e8a060" opacity="0.6"/>
+  <!-- Nose bridge -->
+  <path d="M98 112 Q100 116 102 112" stroke="#e8a060" stroke-width="1.5" fill="none" opacity="0.5"/>
+  <!-- Ear buds -->
+  <ellipse cx="74" cy="108" rx="4" ry="5" fill="#fddbb8"/>
+  <ellipse cx="126" cy="108" rx="4" ry="5" fill="#fddbb8"/>
+  <!-- Arms — more defined -->
+  <path d="M75 142 C63 138 56 144 52 150 C55 154 60 155 64 152" stroke="#f9c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <path d="M125 142 C137 138 144 144 148 150 C145 154 140 155 136 152" stroke="#f9c9a0" stroke-width="7" stroke-linecap="round" fill="none"/>
+  <!-- Legs tucked -->
+  <path d="M86 196 C80 208 78 220 80 232" stroke="#f9c9a0" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <path d="M114 196 C120 208 122 220 120 232" stroke="#f9c9a0" stroke-width="8" stroke-linecap="round" fill="none"/>
+  <!-- Feet -->
+  <ellipse cx="80" cy="234" rx="8" ry="5" fill="#fde8d0"/>
+  <ellipse cx="120" cy="234" rx="8" ry="5" fill="#fde8d0"/>
+  <!-- Umbilical cord -->
+  <path d="M100 200 C99 212 97 220 96 228" stroke="#f9a8d4" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.4"/>
+  <text x="100" y="258" text-anchor="middle" font-family="system-ui" font-size="11" font-weight="600" fill="#be185d" opacity="0.8">Week 12</text>
+  <text x="100" y="272" text-anchor="middle" font-family="system-ui" font-size="9" fill="#9ca3af">~5.4 cm · 14 g</text>
+</svg>
