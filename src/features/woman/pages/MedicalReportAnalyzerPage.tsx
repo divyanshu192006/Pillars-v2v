@@ -77,8 +77,9 @@ export default function MedicalReportAnalyzerPage() {
   const extractPdfText = async (file: File): Promise<string> => {
     try {
       const pdfjsLib = await import('pdfjs-dist');
-      // Use the worker from public folder
-      pdfjsLib.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+      // Use CDN worker — works on all environments (localhost + Vercel + any deployment)
+      pdfjsLib.GlobalWorkerOptions.workerSrc =
+        `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.mjs`;
 
       const arrayBuffer = await file.arrayBuffer();
       const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
