@@ -115,6 +115,8 @@ export async function generateJSONWithImage<T>(
   const cleaned = text.replace(/```json\n?|\n?```/g, '').trim();
   return JSON.parse(cleaned) as T;
 }
+
+export async function chatWithHistory(
   systemInstruction: string,
   history: { role: string; parts: { text: string }[] }[],
   message: string,
