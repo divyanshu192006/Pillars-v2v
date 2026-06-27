@@ -1,8 +1,4 @@
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GoogleAIFileManager } from '@google/generative-ai/server';
-import { writeFileSync, unlinkSync } from 'fs';
-import { tmpdir } from 'os';
-import { join } from 'path';
 
 // Lazy init — dotenv.config() in index.ts runs before first call
 let _genAI: GoogleGenerativeAI | null | undefined = undefined;
@@ -118,38 +114,69 @@ async function generateWithPdfFile(
   pdfBase64: string,
   apiKey: string,
 ): Promise<string> {
-  const fileManager = new GoogleAIFileManager(apiKey);
+  // Upload PDF via Gemini Files REST API
+  const pdfBuffer = Buffer.from(pdfBase64, 'base64');
+
+  // Step 1: Start resumable upload
+  const startRes = await fetch(
+    `https://generativelanguage.googleapis.com/upload/v1beta/files?key=${apiKey}`,
+    {
+      method: 'POST',
+      headers: {
+        'X-Goog-Upload-Protocol': 'resumable',
+        'X-Goog-Upload-Command': 'start',
+        'X-Goog-Upload-Header-Content-Length': String(pdfBuffer.length),
+        'X-Goog-Upload-Header-Content-Type': 'application/pdf',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ file: { displayName: 'medical-report.pdf' } }),
+    }
+  );
+
+  const uploadUrl = startRes.headers.get('x-goog-upload-url');
+  if (!uploadUrl) throw new Error('Failed to get upload URL from Gemini Files API');
+
+  // Step 2: Upload the actual bytes
+  const uploadRes = await fetch(uploadUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Length': String(pdfBuffer.length),
+      'X-Goog-Upload-Offset': '0',
+      'X-Goog-Upload-Command': 'upload, finalize',
+    },
+    body: pdfBuffer,
+  });
+
+  const fileData = await uploadRes.json() as { file?: { uri: string; name: string } };
+  const fileUri = fileData?.file?.uri;
+  const fileName = fileData?.file?.name;
+
+  if (!fileUri) throw new Error('Failed to upload PDF to Gemini Files API');
+
+  // Step 3: Generate content using the uploaded file
   const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
 
-  // Write PDF to a temp file
-  const tempPath = join(tmpdir(), `maaraksha-report-${Date.now()}.pdf`);
-  try {
-    writeFileSync(tempPath, Buffer.from(pdfBase64, 'base64'));
+  const result = await model.generateContent([
+    {
+      fileData: {
+        mimeType: 'application/pdf',
+        fileUri,
+      },
+    },
+    prompt,
+  ]);
 
-    // Upload to Gemini Files API
-    const uploadResult = await fileManager.uploadFile(tempPath, {
-      mimeType: 'application/pdf',
-      displayName: 'medical-report.pdf',
-    });
+  const text = result.response.text();
 
-    const fileUri = uploadResult.file.uri;
-
-    // Generate with the uploaded file
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
-    const result = await model.generateContent([
-      { fileData: { mimeType: 'application/pdf', fileUri } },
-      prompt,
-    ]);
-
-    const text = result.response.text();
-
-    // Clean up uploaded file
-    await fileManager.deleteFile(uploadResult.file.name).catch(() => {});
-    return text;
-  } finally {
-    // Clean up temp file
-    try { unlinkSync(tempPath); } catch { /* ignore */ }
+  // Step 4: Clean up uploaded file (fire and forget)
+  if (fileName) {
+    fetch(`https://generativelanguage.googleapis.com/v1beta/${fileName}?key=${apiKey}`, {
+      method: 'DELETE',
+    }).catch(() => {});
   }
+
+  return text;
 }
 
 export async function generateJSONWithImage<T>(
