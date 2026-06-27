@@ -79,16 +79,35 @@ export const api = {
       body: JSON.stringify(data),
     }),
 
-  analyzeFile: (file: File, reportType: string, gestationalWeek?: number) => {
+  analyzeFile: async (file: File, reportType: string, gestationalWeek?: number) => {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('reportType', reportType);
     if (gestationalWeek) formData.append('gestationalWeek', String(gestationalWeek));
-    return request<{ analysis: { findings: string[]; abnormalValues: string[]; riskIndicators: string[]; followUp: string; aiSummary: string } }>('/ai/analyze-file', {
+
+    // CRITICAL: Do NOT use request() — it injects Content-Type: application/json
+    // which destroys the multipart/form-data boundary that multer needs.
+    // Use fetch directly so the browser sets the correct Content-Type with boundary.
+    const res = await fetch(`${API_BASE}/ai/analyze-file`, {
       method: 'POST',
       body: formData,
-      // Don't set Content-Type — browser sets it with boundary for multipart
+      // NO Content-Type header — browser auto-sets: multipart/form-data; boundary=...
     });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ error: res.statusText }));
+      throw new Error(err.error || `File analysis failed: ${res.status}`);
+    }
+
+    return res.json() as Promise<{
+      analysis: {
+        findings: string[];
+        abnormalValues: string[];
+        riskIndicators: string[];
+        followUp: string;
+        aiSummary: string;
+      };
+    }>;
   },
 
   getDigitalTwin: (data: Record<string, unknown>) =>
