@@ -142,6 +142,19 @@ app.post('/api/ai/analyze-report', async (req, res) => {
   try {
     const { reportText, reportType, gestationalWeek } = req.body;
     if (!reportText) return res.status(400).json({ error: 'Report text required' });
+    
+    // If only a filename was sent (PDF/image upload without text extraction), return helpful fallback
+    const isJustFilename = reportText.trim().startsWith('File uploaded:') || reportText.trim().length < 20;
+    if (isJustFilename) {
+      return res.json({ analysis: {
+        findings: ['Report file received successfully'],
+        abnormalValues: [],
+        riskIndicators: [],
+        followUp: 'Please type or paste your report values in the text box below for AI analysis. For example: "Hemoglobin: 9.2 g/dL, Blood Pressure: 142/92 mmHg"',
+        aiSummary: 'File uploaded. To get AI analysis, please type your lab values in the text area below and click Analyze Report.',
+      }});
+    }
+
     if (isGeminiConfigured()) {
       const analysis = await generateJSON<{ findings: string[]; abnormalValues: string[]; riskIndicators: string[]; followUp: string; aiSummary: string }>(
         `You are a maternal health doctor analyzing a pregnancy ${reportType || 'lab'} report. Patient week: ${gestationalWeek || 'unknown'}.\nReport: "${reportText}"\nReturn ONLY JSON: {"findings":["finding1"],"abnormalValues":["any abnormal value with context"],"riskIndicators":["risk if any"],"followUp":"specific recommendation","aiSummary":"2-3 sentence plain language summary"}`
@@ -210,4 +223,9 @@ function getSmartLocalReply(message: string, lang: string): string {
 app.listen(PORT, () => {
   console.log(`MaaRaksha API running on port ${PORT}`);
   console.log(`Gemini AI: ${isGeminiConfigured() ? 'ENABLED' : 'DEMO MODE (local fallback)'}`);
+});
+
+// Global error handler — prevents unhandled promise rejections from crashing
+process.on('unhandledRejection', (reason) => {
+  console.error('Unhandled rejection:', reason);
 });
