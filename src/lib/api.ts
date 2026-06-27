@@ -1,6 +1,14 @@
-// In production (Vercel), VITE_API_URL must be set to https://your-backend.onrender.com/api
-// In development, the Vite proxy handles /api -> localhost:5000
-const API_BASE = (import.meta.env.VITE_API_URL || '/api').replace(/\/$/, '');
+// VITE_API_URL must be set in Vercel environment variables
+// Value: https://maarakshak.onrender.com/api
+// Falls back to Render URL if env var is missing, or /api proxy in dev
+const API_BASE = (() => {
+  const env = import.meta.env.VITE_API_URL;
+  if (env) return env.replace(/\/$/, '');
+  // In dev (localhost), use Vite proxy
+  if (typeof window !== 'undefined' && window.location.hostname === 'localhost') return '/api';
+  // In production without env var, use Render directly
+  return 'https://maarakshak.onrender.com/api';
+})();
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
   const res = await fetch(`${API_BASE}${path}`, {
