@@ -1,7 +1,7 @@
 import { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Upload, FileText, Sparkles, Loader2, CheckCircle, AlertTriangle, X, FileScan } from 'lucide-react';
+import { Upload, FileText, Sparkles, Loader2, CheckCircle, AlertTriangle, X, FileScan, Pill, Calendar } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import { useData } from '@/contexts/DataContext';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -24,6 +24,8 @@ interface UploadedReport {
   reportType: string;
   uploadedAt: string;
   analysis?: AnalysisResult;
+  extractedMedicines?: number;
+  extractedAppointments?: number;
   status: 'pending' | 'analyzing' | 'complete' | 'failed';
 }
 
@@ -37,7 +39,7 @@ const REPORT_TYPES = [
 export default function MedicalReportAnalyzerPage() {
   const { t } = useTranslation();
   const { user } = useAuth();
-  const { pregnancies } = useData();
+  const { pregnancies, addMedicineFromReport, addAppointmentFromReport } = useData();
   const pregnancy = pregnancies.find(p => p.id === user?.linkedPregnancyId) || pregnancies[0];
   const fileRef = useRef<HTMLInputElement>(null);
   const [selectedType, setSelectedType] = useState('blood_test');
@@ -82,15 +84,51 @@ export default function MedicalReportAnalyzerPage() {
     setAnalyzing(true);
     try {
       const res = await api.analyzeFile(file, selectedType, pregnancy?.gestationalWeek);
+
+      // ── Save extracted medicines ───────────────────────────────────────────
+      const extractedMeds = (res as any).medicines || [];
+      const extractedAppts = (res as any).appointments || [];
+      console.log('[Report Analyzer] Medicines extracted:', extractedMeds.length, extractedMeds);
+      console.log('[Report Analyzer] Appointments extracted:', extractedAppts.length, extractedAppts);
+
+      if (pregnancy) {
+        for (const med of extractedMeds) {
+          if (med?.name?.trim()) {
+            addMedicineFromReport({
+              pregnancyId: pregnancy.id,
+              womanId: user?.id || pregnancy.womanId,
+              name: med.name,
+              dosage: med.dosage || 'As prescribed',
+              frequency: med.frequency || 'As directed',
+              time: med.time || '08:00',
+              taken: false,
+            });
+          }
+        }
+        for (const appt of extractedAppts) {
+          if (appt?.title?.trim()) {
+            addAppointmentFromReport({
+              pregnancyId: pregnancy.id,
+              womanId: user?.id || pregnancy.womanId,
+              type: (['ANC','ultrasound','lab','follow_up'].includes(appt.type) ? appt.type : 'follow_up') as 'ANC'|'ultrasound'|'lab'|'follow_up',
+              title: appt.title,
+              date: appt.date ? new Date(appt.date).toISOString() : new Date(Date.now() + 7 * 86400000).toISOString(),
+              status: 'upcoming',
+              location: appt.location || 'Nearest PHC',
+              notes: 'Extracted from uploaded medical report',
+            });
+          }
+        }
+      }
+
       setReports(prev => prev.map(r => r.id === id ? {
-        ...r,
-        status: 'complete',
-        analysis: res.analysis,
+        ...r, status: 'complete', analysis: res.analysis,
+        extractedMedicines: extractedMeds.length,
+        extractedAppointments: extractedAppts.length,
       } : r));
     } catch (err: unknown) {
-      // Show quota/rate limit as a special "complete with notice" state instead of "failed"
       const errMsg = err instanceof Error ? err.message : String(err);
-      console.error('[Report Analyzer] Upload error:', errMsg);
+      console.error('[Report Analyzer] Error:', errMsg);
       const isQuota = errMsg.includes('429') || errMsg.includes('quota');
       setReports(prev => prev.map(r => r.id === id ? {
         ...r,
@@ -99,14 +137,10 @@ export default function MedicalReportAnalyzerPage() {
           findings: ['AI quota temporarily exceeded'],
           abnormalValues: [],
           riskIndicators: [],
-          followUp: 'The AI analysis quota has been reached. Please try again in a few hours or paste your lab values in the text box below for instant analysis.',
-          aiSummary: '⏳ API quota reached. Your file was uploaded successfully. To get instant analysis now, type or paste your key lab values (e.g. Hemoglobin, Blood Pressure, Blood Sugar) in the text area and click Analyze Report.',
+          followUp: 'Gemini quota reached. Try again in a few hours, or type lab values below.',
+          aiSummary: '⏳ API quota reached. Type your key lab values in the text area for instant analysis.',
         } : undefined,
       } : r));
-      // Show error in UI via a temporary alert so we can debug
-      if (!isQuota) {
-        console.error('[Report Analyzer] Non-quota error — check Network tab for details:', errMsg);
-      }
     } finally {
       setAnalyzing(false);
     }
@@ -204,6 +238,25 @@ export default function MedicalReportAnalyzerPage() {
                     <div className="rounded-xl bg-primary-50 border border-primary-100 p-3">
                       <p className="text-xs font-semibold text-primary-600 mb-1">{t('reportAnalyzer.followUp')}</p>
                       <p className="text-sm text-gray-700">{r.analysis.followUp}</p>
+                    </div>
+                  )}
+
+                  {/* Extracted medicines/appointments confirmation */}
+                  {((r.extractedMedicines ?? 0) > 0 || (r.extractedAppointments ?? 0) > 0) && (
+                    <div className="rounded-xl bg-emerald-50 border border-emerald-200 p-3 space-y-1">
+                      <p className="text-xs font-bold text-emerald-700 mb-2">✅ Automatically saved to your profile:</p>
+                      {(r.extractedMedicines ?? 0) > 0 && (
+                        <p className="text-xs text-emerald-700 flex items-center gap-1.5">
+                          <Pill className="h-3.5 w-3.5" />
+                          {r.extractedMedicines} medicine{(r.extractedMedicines ?? 0) > 1 ? 's' : ''} added to Medicines page
+                        </p>
+                      )}
+                      {(r.extractedAppointments ?? 0) > 0 && (
+                        <p className="text-xs text-emerald-700 flex items-center gap-1.5">
+                          <Calendar className="h-3.5 w-3.5" />
+                          {r.extractedAppointments} appointment{(r.extractedAppointments ?? 0) > 1 ? 's' : ''} added to Appointments page
+                        </p>
+                      )}
                     </div>
                   )}
                 </CardContent>

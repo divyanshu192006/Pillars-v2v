@@ -224,9 +224,41 @@ app.post('/api/ai/analyze-file', upload.single('file'), async (req, res) => {
 
     // ── PHASE 2: BUILD PROMPT ─────────────────────────────────────────────────
     const prompt = `You are a maternal health doctor. Carefully read this ${reportType || 'lab'} report for a patient at ${gestationalWeek || 'unknown'} weeks of pregnancy.
-Extract ALL visible lab values, measurements, and clinical findings from the document.
-Return ONLY this JSON (no markdown):
-{"findings":["specific finding from the report"],"abnormalValues":["value name: X (normal range: Y — concern: Z)"],"riskIndicators":["specific risk relevant to pregnancy"],"followUp":"specific actionable recommendation for the pregnant patient","aiSummary":"2-3 sentence plain language summary of the report findings and what they mean for the pregnancy"}`;
+Extract ALL visible lab values, medicines, and follow-up appointments from the document.
+
+Return ONLY this JSON (no markdown, no extra text):
+{
+  "findings": ["specific finding from the report"],
+  "abnormalValues": ["value name: X (normal range: Y — concern: Z)"],
+  "riskIndicators": ["specific risk relevant to pregnancy"],
+  "followUp": "specific actionable recommendation for the pregnant patient",
+  "aiSummary": "2-3 sentence plain language summary for the patient",
+  "medicines": [
+    {
+      "name": "medicine name",
+      "dosage": "dose amount e.g. 200mg",
+      "frequency": "e.g. Twice daily / 1-0-1",
+      "duration": "e.g. 3 months",
+      "purpose": "reason prescribed e.g. Iron deficiency anaemia",
+      "time": "08:00"
+    }
+  ],
+  "appointments": [
+    {
+      "title": "appointment title e.g. Prenatal Follow-up",
+      "date": "YYYY-MM-DD format if mentioned, else empty string",
+      "type": "ANC or follow_up or lab or ultrasound",
+      "location": "location if mentioned, else Nearest PHC"
+    }
+  ]
+}
+
+Rules:
+- If no medicines mentioned, return empty array []
+- If no appointments mentioned, return empty array []
+- Extract ALL prescribed medications including supplements
+- If a follow-up date is mentioned, add it to appointments
+- Common medicines to look for: Iron, Folic Acid, Calcium, Vitamins, Antibiotics, Antihypertensives`;
 
     console.log('[analyze-file] PROMPT LENGTH:', prompt.length);
     console.log('[analyze-file] GEMINI CONFIGURED:', isGeminiConfigured());
@@ -235,12 +267,27 @@ Return ONLY this JSON (no markdown):
     if (isGeminiConfigured()) {
       try {
         console.log('[analyze-file] SENDING TO GEMINI — mimeType:', mimeType, 'base64Len:', base64.length);
-        const analysis = await generateJSONWithImage<{
+        const result = await generateJSONWithImage<{
           findings: string[]; abnormalValues: string[];
           riskIndicators: string[]; followUp: string; aiSummary: string;
+          medicines?: { name: string; dosage: string; frequency: string; duration: string; purpose: string; time?: string }[];
+          appointments?: { title: string; date: string; type: string; location: string }[];
         }>(prompt, base64, mimeType);
-        console.log('[analyze-file] SUCCESS — findings:', analysis.findings?.length, 'abnormal:', analysis.abnormalValues?.length);
-        return res.json({ analysis });
+
+        const medicines = result.medicines || [];
+        const appointments = result.appointments || [];
+        console.log('[analyze-file] SUCCESS — findings:', result.findings?.length, 'medicines:', medicines.length, 'appointments:', appointments.length);
+
+        // Build analysis (without medicines/appointments to keep backward compat)
+        const analysis = {
+          findings: result.findings || [],
+          abnormalValues: result.abnormalValues || [],
+          riskIndicators: result.riskIndicators || [],
+          followUp: result.followUp || '',
+          aiSummary: result.aiSummary || '',
+        };
+
+        return res.json({ analysis, medicines, appointments });
       } catch (geminiErr) {
         const msg = (geminiErr as Error).message || '';
         console.error('[analyze-file] GEMINI ERROR:', msg.slice(0, 300));

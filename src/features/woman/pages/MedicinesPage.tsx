@@ -25,6 +25,9 @@ export default function MedicinesPage() {
             <div className="flex-1">
               <h4 className="font-semibold">{m.name}</h4>
               <p className="text-sm text-gray-500">{m.dosage} · {m.frequency}</p>
+              {(m as any).purpose && (
+                <p className="text-xs text-blue-600 mt-0.5">📋 {(m as any).purpose}</p>
+              )}
               <p className="mt-1 flex items-center gap-1 text-xs text-gray-400">
                 <Clock className="h-3 w-3" /> {t('medicines.reminderAt', { time: m.time })}
               </p>

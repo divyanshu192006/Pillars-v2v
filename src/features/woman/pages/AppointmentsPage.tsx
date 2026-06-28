@@ -57,7 +57,7 @@ export default function AppointmentsPage() {
                         <p className="flex items-center gap-1 text-sm text-gray-500">
                           <MapPin className="h-3.5 w-3.5" />{a.location}
                         </p>
-                        {a.notes && <p className="mt-2 text-xs text-amber-600">{a.notes}</p>}
+                        {a.notes && <p className="mt-2 text-xs text-blue-600 bg-blue-50 rounded-lg px-2 py-1">📋 {a.notes}</p>}
                       </div>
                       <Badge variant={statusVariant[a.status]}>{statusLabel(a.status)}</Badge>
                     </CardContent>

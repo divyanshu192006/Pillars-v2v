@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useCallback, type ReactNode } from 'react';
+import { createContext, useContext, useState, useCallback, useEffect, type ReactNode } from 'react';
 import type {
   Pregnancy, Symptom, RiskReport, Alert, Notification,
   Appointment, MedicineReminder, RiskHistoryEntry, DailyEntry,
@@ -7,6 +7,25 @@ import {
   DEMO_PREGNANCIES, DEMO_SYMPTOMS, DEMO_RISK_REPORTS, DEMO_ALERTS,
   DEMO_NOTIFICATIONS, DEMO_APPOINTMENTS, DEMO_MEDICINES, DEMO_RISK_HISTORY,
 } from '@/lib/demo-data';
+
+const STORAGE_KEY = 'maaraksha_report_data';
+
+function loadReportData(): { medicines: MedicineReminder[]; appointments: Appointment[] } {
+  try {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) return JSON.parse(saved);
+  } catch { /* ignore */ }
+  return { medicines: [], appointments: [] };
+}
+
+function saveReportData(medicines: MedicineReminder[], appointments: Appointment[]) {
+  try {
+    // Only save report-extracted items (not demo items)
+    const reportMeds = medicines.filter(m => m.id.startsWith('report-'));
+    const reportAppts = appointments.filter(a => a.id.startsWith('report-'));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ medicines: reportMeds, appointments: reportAppts }));
+  } catch { /* ignore */ }
+}
 
 interface DataContextType {
   pregnancies: Pregnancy[];
@@ -28,18 +47,29 @@ interface DataContextType {
   triggerSOS: (pregnancyId: string) => void;
   addDailyEntry: (entry: DailyEntry) => void;
   getDailyEntry: (pregnancyId: string, date: string) => DailyEntry | undefined;
+  addMedicineFromReport: (med: Omit<MedicineReminder, 'id'>) => void;
+  addAppointmentFromReport: (appt: Omit<Appointment, 'id'>) => void;
 }
 
 const DataContext = createContext<DataContextType | null>(null);
 
 export function DataProvider({ children }: { children: ReactNode }) {
+  // Load report-extracted items from localStorage on startup
+  const savedData = loadReportData();
+
   const [pregnancies, setPregnancies] = useState(DEMO_PREGNANCIES);
   const [symptoms, setSymptoms] = useState(DEMO_SYMPTOMS);
   const [riskReports, setRiskReports] = useState(DEMO_RISK_REPORTS);
   const [alerts, setAlerts] = useState(DEMO_ALERTS);
   const [notifications, setNotifications] = useState(DEMO_NOTIFICATIONS);
-  const [appointments] = useState(DEMO_APPOINTMENTS);
-  const [medicines, setMedicines] = useState(DEMO_MEDICINES);
+  const [appointments, setAppointments] = useState<Appointment[]>([
+    ...DEMO_APPOINTMENTS,
+    ...savedData.appointments,
+  ]);
+  const [medicines, setMedicines] = useState<MedicineReminder[]>([
+    ...DEMO_MEDICINES,
+    ...savedData.medicines,
+  ]);
   const [riskHistory, setRiskHistory] = useState(DEMO_RISK_HISTORY);
   const [dailyEntries, setDailyEntries] = useState<DailyEntry[]>([]);
 
@@ -132,6 +162,44 @@ export function DataProvider({ children }: { children: ReactNode }) {
     return dailyEntries.find(e => e.pregnancyId === pregnancyId && e.date === date);
   }, [dailyEntries]);
 
+  // ── Report-extracted medicines & appointments ─────────────────────────────
+
+  const addMedicineFromReport = useCallback((med: Omit<MedicineReminder, 'id'>) => {
+    const newMed: MedicineReminder = {
+      ...med,
+      id: `report-med-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    };
+    setMedicines(prev => {
+      // Avoid duplicates by name
+      if (prev.some(m => m.name.toLowerCase() === newMed.name.toLowerCase() && m.pregnancyId === newMed.pregnancyId)) {
+        return prev;
+      }
+      const updated = [newMed, ...prev];
+      // Persist report-extracted items to localStorage
+      const reportMeds = updated.filter(m => m.id.startsWith('report-'));
+      saveReportData(reportMeds, appointments.filter(a => a.id.startsWith('report-')));
+      return updated;
+    });
+  }, [appointments]);
+
+  const addAppointmentFromReport = useCallback((appt: Omit<Appointment, 'id'>) => {
+    const newAppt: Appointment = {
+      ...appt,
+      id: `report-appt-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+    };
+    setAppointments(prev => {
+      // Avoid duplicates by title + date
+      if (prev.some(a => a.title === newAppt.title && a.pregnancyId === newAppt.pregnancyId)) {
+        return prev;
+      }
+      const updated = [newAppt, ...prev];
+      // Persist to localStorage
+      const reportAppts = updated.filter(a => a.id.startsWith('report-'));
+      saveReportData(medicines.filter(m => m.id.startsWith('report-')), reportAppts);
+      return updated;
+    });
+  }, [medicines]);
+
   return (
     <DataContext.Provider value={{
       pregnancies, symptoms, riskReports, alerts, notifications,
@@ -139,6 +207,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
       addSymptom, addRiskReport, addAlert, addNotification,
       updatePregnancyRisk, markNotificationRead, toggleMedicineTaken, triggerSOS,
       addDailyEntry, getDailyEntry,
+      addMedicineFromReport, addAppointmentFromReport,
     }}>
       {children}
     </DataContext.Provider>
