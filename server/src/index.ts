@@ -200,6 +200,77 @@ Analyze this medical report and return ONLY JSON:
   }
 });
 
+// ── Regex fallback helpers ────────────────────────────────────────────────────
+
+function extractMedicinesRegex(text: string): { name: string; dosage: string; frequency: string; duration: string; purpose: string; time: string }[] {
+  const medicines: { name: string; dosage: string; frequency: string; duration: string; purpose: string; time: string }[] = [];
+  const lines = text.split('\n');
+
+  for (const line of lines) {
+    // Match patterns like: "1. Medicine Name 200mg - twice daily - 3 months"
+    // or "Medicine Name: Ferrous Sulphate 200mg"
+    // or "Rx: Amoxicillin 500mg TDS x 5 days"
+    const medMatch = line.match(/(?:^\d+[.)]\s*|Medicine\s*(?:Name)?[:\s]+|Rx[:\s]+|Tab\.|Cap\.|Inj\.)([A-Za-z][A-Za-z\s+&\/\-]{2,40}?)(?:\s+(\d+\s*(?:mg|ml|mcg|g|IU|units?)))?/i);
+    if (medMatch && medMatch[1]?.trim().length > 2) {
+      const name = medMatch[1].trim().replace(/\s+/g, ' ');
+      // Skip if it looks like a section header
+      if (/^(Patient|Doctor|Date|Report|Hospital|Clinic|Test|Blood|Urine|Section|Investigation)/i.test(name)) continue;
+
+      const dosage = medMatch[2] || 'As prescribed';
+      // Look for frequency in same line
+      const freqMatch = line.match(/(\d-\d-\d|once|twice|thrice|TDS|BD|OD|QID|daily|weekly|\d+\s*times)/i);
+      const durMatch = line.match(/(\d+\s*(?:days?|weeks?|months?|years?))/i);
+
+      medicines.push({
+        name,
+        dosage,
+        frequency: freqMatch ? freqMatch[1] : 'As directed',
+        duration: durMatch ? durMatch[1] : 'As prescribed',
+        purpose: '',
+        time: '08:00',
+      });
+    }
+  }
+  // Deduplicate by name
+  const seen = new Set<string>();
+  return medicines.filter(m => {
+    const key = m.name.toLowerCase();
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  }).slice(0, 10); // max 10 medicines
+}
+
+function extractAppointmentsRegex(text: string): { title: string; date: string; type: string; location: string }[] {
+  const appointments: { title: string; date: string; type: string; location: string }[] = [];
+
+  // Match date patterns for follow-up mentions
+  const followUpPatterns = [
+    /(?:next\s+appointment|follow[- ]?up|review|revisit|come\s+back|visit\s+again)[^\n]*?(\d{1,2}[\/\-\s]\w+[\/\-\s]\d{2,4}|\d{1,2}\s+\w+\s+\d{4})/gi,
+    /(?:review\s+after|follow\s+up\s+(?:on|in|after))[^\n]*?(\d{1,2}[\/\-\s]\w+[\/\-\s]\d{2,4}|\d{1,2}\s+\w+\s+\d{4})/gi,
+    /appointment\s+(?:on|date)[:\s]+(\d{1,2}[\/\-\s]\w+[\/\-\s]\d{2,4}|\d{1,2}\s+\w+\s+\d{4})/gi,
+  ];
+
+  for (const pattern of followUpPatterns) {
+    let match;
+    while ((match = pattern.exec(text)) !== null) {
+      const dateStr = match[1];
+      if (dateStr) {
+        const parsed = new Date(dateStr);
+        const dateFormatted = isNaN(parsed.getTime()) ? '' : parsed.toISOString().split('T')[0];
+        appointments.push({
+          title: 'Follow-up Appointment',
+          date: dateFormatted,
+          type: 'follow_up',
+          location: 'Nearest PHC',
+        });
+      }
+    }
+  }
+
+  return appointments.slice(0, 5);
+}
+
 // ── Feature 2b: Analyze Report via direct file upload ────────────────────────
 app.post('/api/ai/analyze-file', upload.single('file'), async (req, res) => {
   try {
@@ -222,7 +293,20 @@ app.post('/api/ai/analyze-file', upload.single('file'), async (req, res) => {
 
     console.log('[analyze-file] BASE64 LENGTH:', base64.length);
 
-    // ── PHASE 2: BUILD PROMPT ─────────────────────────────────────────────────
+    // ── PHASE 2: DETECT MIME TYPE — real PDF vs text content ─────────────────
+    // If multer says application/pdf but content starts with text, treat as text/plain
+    // Real PDFs start with %PDF-1. Fake PDFs (text sent as PDF) don't.
+    const fileStart = fileBuffer.slice(0, 5).toString('ascii');
+    const isRealPdf = fileStart.startsWith('%PDF-');
+    const effectiveMimeType = isRealPdf ? mimeType : 'text/plain';
+    console.log('[analyze-file] FILE START:', JSON.stringify(fileStart), '| IS REAL PDF:', isRealPdf, '| EFFECTIVE MIME:', effectiveMimeType);
+
+    // If text content, extract it for logging and direct AI use
+    const textContent = !isRealPdf ? fileBuffer.toString('utf-8') : null;
+    if (textContent) {
+      console.log('[analyze-file] TEXT CONTENT LENGTH:', textContent.length);
+      console.log('[analyze-file] TEXT PREVIEW:', textContent.slice(0, 500));
+    }
     const prompt = `You are a maternal health doctor. Carefully read this ${reportType || 'lab'} report for a patient at ${gestationalWeek || 'unknown'} weeks of pregnancy.
 Extract ALL visible lab values, medicines, and follow-up appointments from the document.
 
@@ -260,34 +344,105 @@ Rules:
 - If a follow-up date is mentioned, add it to appointments
 - Common medicines to look for: Iron, Folic Acid, Calcium, Vitamins, Antibiotics, Antihypertensives`;
 
+    // ── PHASE 3: BUILD PROMPT ─────────────────────────────────────────────────
+
+    // ── PHASE 3: BUILD PROMPT ─────────────────────────────────────────────────
+    const prompt = `You are a maternal health doctor. Carefully read this ${reportType || 'lab'} report for a patient at ${gestationalWeek || 'unknown'} weeks of pregnancy.
+Extract ALL visible lab values, medicines, and follow-up appointments from the document.
+
+Return ONLY this JSON (no markdown, no extra text):
+{
+  "findings": ["specific finding from the report"],
+  "abnormalValues": ["value name: X (normal range: Y — concern: Z)"],
+  "riskIndicators": ["specific risk relevant to pregnancy"],
+  "followUp": "specific actionable recommendation for the pregnant patient",
+  "aiSummary": "2-3 sentence plain language summary for the patient",
+  "medicines": [
+    {
+      "name": "medicine name",
+      "dosage": "dose amount e.g. 200mg",
+      "frequency": "e.g. Twice daily / 1-0-1",
+      "duration": "e.g. 3 months",
+      "purpose": "reason prescribed e.g. Iron deficiency anaemia",
+      "time": "08:00"
+    }
+  ],
+  "appointments": [
+    {
+      "title": "appointment title e.g. Prenatal Follow-up",
+      "date": "YYYY-MM-DD format if mentioned, else empty string",
+      "type": "ANC or follow_up or lab or ultrasound",
+      "location": "location if mentioned, else Nearest PHC"
+    }
+  ]
+}
+
+Rules:
+- If no medicines mentioned, return empty array []
+- If no appointments mentioned, return empty array []
+- Extract ALL prescribed medications including supplements
+- If a follow-up date is mentioned, add it to appointments
+- Common medicines to look for: Iron, Folic Acid, Calcium, Vitamins, Antibiotics, Antihypertensives, Metformin`;
+
     console.log('[analyze-file] PROMPT LENGTH:', prompt.length);
     console.log('[analyze-file] GEMINI CONFIGURED:', isGeminiConfigured());
 
-    // ── PHASE 3: AI ANALYSIS ──────────────────────────────────────────────────
+    // ── PHASE 4: AI ANALYSIS ──────────────────────────────────────────────────
     if (isGeminiConfigured()) {
       try {
-        console.log('[analyze-file] SENDING TO GEMINI — mimeType:', mimeType, 'base64Len:', base64.length);
-        const result = await generateJSONWithImage<{
+        console.log('[analyze-file] SENDING TO GEMINI — effectiveMimeType:', effectiveMimeType);
+
+        type AnalysisResult = {
           findings: string[]; abnormalValues: string[];
           riskIndicators: string[]; followUp: string; aiSummary: string;
           medicines?: { name: string; dosage: string; frequency: string; duration: string; purpose: string; time?: string }[];
           appointments?: { title: string; date: string; type: string; location: string }[];
-        }>(prompt, base64, mimeType);
-
-        const medicines = result.medicines || [];
-        const appointments = result.appointments || [];
-        console.log('[analyze-file] SUCCESS — findings:', result.findings?.length, 'medicines:', medicines.length, 'appointments:', appointments.length);
-
-        // Build analysis (without medicines/appointments to keep backward compat)
-        const analysis = {
-          findings: result.findings || [],
-          abnormalValues: result.abnormalValues || [],
-          riskIndicators: result.riskIndicators || [],
-          followUp: result.followUp || '',
-          aiSummary: result.aiSummary || '',
         };
 
-        return res.json({ analysis, medicines, appointments });
+        let result: AnalysisResult;
+
+        if (!isRealPdf && textContent) {
+          // Text content — send directly as text prompt (no upload needed, faster, reliable)
+          console.log('[analyze-file] TEXT MODE — sending content directly in prompt');
+          result = await generateJSON<AnalysisResult>(
+            `${prompt}\n\nDocument content:\n${textContent.slice(0, 8000)}`
+          );
+        } else {
+          // Real PDF binary — use Gemini Files API
+          console.log('[analyze-file] PDF MODE — uploading to Gemini Files API');
+          result = await generateJSONWithImage<AnalysisResult>(prompt, base64, effectiveMimeType);
+        }
+
+        let medicines = result.medicines || [];
+        let appointments = result.appointments || [];
+        console.log('[analyze-file] AI medicines:', JSON.stringify(medicines));
+        console.log('[analyze-file] AI appointments:', JSON.stringify(appointments));
+
+        // ── Regex fallback if AI returned empty medicines/appointments ────────
+        const contentForRegex = textContent || fileBuffer.toString('utf-8', 0, Math.min(fileBuffer.length, 5000));
+        if (medicines.length === 0) {
+          medicines = extractMedicinesRegex(contentForRegex);
+          if (medicines.length > 0) console.log('[analyze-file] REGEX medicines:', JSON.stringify(medicines));
+        }
+        if (appointments.length === 0) {
+          appointments = extractAppointmentsRegex(contentForRegex);
+          if (appointments.length > 0) console.log('[analyze-file] REGEX appointments:', JSON.stringify(appointments));
+        }
+
+        console.log('[analyze-file] FINAL — findings:', result.findings?.length, 'medicines:', medicines.length, 'appointments:', appointments.length);
+
+        return res.json({
+          analysis: {
+            findings: result.findings || [],
+            abnormalValues: result.abnormalValues || [],
+            riskIndicators: result.riskIndicators || [],
+            followUp: result.followUp || '',
+            aiSummary: result.aiSummary || '',
+          },
+          medicines,
+          appointments,
+        });
+
       } catch (geminiErr) {
         const msg = (geminiErr as Error).message || '';
         console.error('[analyze-file] GEMINI ERROR:', msg.slice(0, 300));
@@ -297,26 +452,26 @@ Rules:
             error: 'AI quota exceeded',
             analysis: {
               findings: ['AI analysis temporarily unavailable due to quota limits'],
-              abnormalValues: [],
-              riskIndicators: [],
-              followUp: 'Gemini free tier quota exceeded. Please try again in a few hours or type your lab values manually.',
+              abnormalValues: [], riskIndicators: [],
+              followUp: 'Gemini quota exceeded. Please try again in a few hours or type your lab values manually.',
               aiSummary: '⏳ AI quota reached. Type your key lab values in the text area below for instant analysis.',
-            }
+            },
+            medicines: [], appointments: [],
           });
         }
-        console.error('[analyze-file] NON-QUOTA GEMINI ERROR — rethrowing');
         throw geminiErr;
       }
     }
 
     console.log('[analyze-file] Gemini not configured — returning stub');
-    res.json({ analysis: {
-      findings: ['Report received'],
-      abnormalValues: [],
-      riskIndicators: [],
-      followUp: 'Please consult your doctor for interpretation.',
-      aiSummary: 'File received. Configure Gemini API for AI analysis.',
-    }});
+    res.json({
+      analysis: {
+        findings: ['Report received'], abnormalValues: [], riskIndicators: [],
+        followUp: 'Please consult your doctor for interpretation.',
+        aiSummary: 'File received. Configure Gemini API for AI analysis.',
+      },
+      medicines: [], appointments: [],
+    });
   } catch (err) {
     console.error('[analyze-file] UNHANDLED ERROR:', err instanceof Error ? err.message : String(err));
     res.status(500).json({ error: err instanceof Error ? err.message : 'File analysis failed' });
