@@ -16,6 +16,10 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+// Wake up Render backend if it's sleeping (free tier spins down after inactivity)
+const API_BASE = (import.meta.env.VITE_API_URL || 'https://maarakshak.onrender.com/api').replace(/\/$/, '');
+fetch(`${API_BASE}/health`).catch(() => {/* silently ignore — backend may be waking up */});
+
 const tree = (
   <StrictMode>
     <BrowserRouter>
