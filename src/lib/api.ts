@@ -6,8 +6,8 @@ const API_BASE = (() => {
   if (env) return env.replace(/\/$/, '');
   // In dev (localhost), use Vite proxy
   if (typeof window !== 'undefined' && window.location.hostname === 'localhost') return '/api';
-  // In production without env var, use Render directly
-  return 'https://maarakshak.onrender.com/api';
+  // In production without env var, use Pillars-v2v Render directly
+  return 'https://pillars-v2v.onrender.com/api';
 })();
 
 async function request<T>(path: string, options?: RequestInit): Promise<T> {
