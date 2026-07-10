@@ -22,7 +22,7 @@ export function Logo({ size = 'md', showText = true, className }: LogoProps) {
       <div className={cn('relative', s.img)}>
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-400/30 to-purple-400/30 blur-xl" />
         <img
-          src="/logo.png"
+          src="/Maaraksha.png"
           alt="MaaRaksha"
           className={cn('relative h-full w-full rounded-full object-cover shadow-lg shadow-primary-200/50 ring-4 ring-white')}
         />

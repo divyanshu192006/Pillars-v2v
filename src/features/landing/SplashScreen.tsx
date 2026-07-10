@@ -139,7 +139,7 @@ export default function SplashScreen() {
             style={{ width: LOGO_SIZE, height: LOGO_SIZE }}
           >
             <img
-              src="/logo.png"
+              src="/Maaraksha.png"
               alt="MaaRaksha"
               className="h-full w-full rounded-full object-cover ring-4 ring-white/90 brightness-110"
             />
