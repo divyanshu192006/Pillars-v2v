@@ -16,9 +16,20 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// Wake up Render backend if it's sleeping (free tier spins down after inactivity)
+// Wake up Render backend (free tier sleeps after inactivity — takes up to 50s to wake)
+// We ping immediately on app load so it's warm before user needs it
 const API_BASE = (import.meta.env.VITE_API_URL || 'https://maarakshak.onrender.com/api').replace(/\/$/, '');
-fetch(`${API_BASE}/health`).catch(() => {/* silently ignore — backend may be waking up */});
+
+async function wakeBackend() {
+  for (let i = 0; i < 3; i++) {
+    try {
+      const r = await fetch(`${API_BASE}/health`, { signal: AbortSignal.timeout(20000) });
+      if (r.ok) { console.log('[MaaRaksha] Backend ready'); return; }
+    } catch { /* retry */ }
+    await new Promise(r => setTimeout(r, 5000));
+  }
+}
+wakeBackend();
 
 const tree = (
   <StrictMode>

@@ -85,29 +85,47 @@ export const api = {
     formData.append('reportType', reportType);
     if (gestationalWeek) formData.append('gestationalWeek', String(gestationalWeek));
 
-    // CRITICAL: Do NOT use request() — it injects Content-Type: application/json
-    // which destroys the multipart/form-data boundary that multer needs.
-    // Use fetch directly so the browser sets the correct Content-Type with boundary.
-    const res = await fetch(`${API_BASE}/ai/analyze-file`, {
-      method: 'POST',
-      body: formData,
-      // NO Content-Type header — browser auto-sets: multipart/form-data; boundary=...
-    });
+    // CRITICAL: Use raw fetch — request() injects Content-Type:application/json
+    // which destroys multipart boundary that multer needs.
+    // Retry up to 2 times for Render free tier wake-up latency.
+    for (let attempt = 1; attempt <= 2; attempt++) {
+      try {
+        const res = await fetch(`${API_BASE}/ai/analyze-file`, {
+          method: 'POST',
+          body: formData,
+        });
 
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({ error: res.statusText }));
-      throw new Error(err.error || `File analysis failed: ${res.status}`);
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({ error: res.statusText }));
+          // 503/502 = backend sleeping — wait and retry
+          if (attempt < 2 && (res.status === 503 || res.status === 502)) {
+            await new Promise(r => setTimeout(r, 8000));
+            continue;
+          }
+          throw new Error(err.error || `File analysis failed: ${res.status}`);
+        }
+
+        return res.json() as Promise<{
+          analysis: {
+            findings: string[];
+            abnormalValues: string[];
+            riskIndicators: string[];
+            followUp: string;
+            aiSummary: string;
+          };
+          medicines?: unknown[];
+          appointments?: unknown[];
+        }>;
+      } catch (err) {
+        // Network error (fetch failed) — backend waking, retry after 8s
+        if (attempt < 2 && err instanceof TypeError) {
+          await new Promise(r => setTimeout(r, 8000));
+          continue;
+        }
+        throw err;
+      }
     }
-
-    return res.json() as Promise<{
-      analysis: {
-        findings: string[];
-        abnormalValues: string[];
-        riskIndicators: string[];
-        followUp: string;
-        aiSummary: string;
-      };
-    }>;
+    throw new Error('File analysis failed after retries');
   },
 
   getDigitalTwin: (data: Record<string, unknown>) =>
