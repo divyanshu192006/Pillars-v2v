@@ -9,6 +9,13 @@ import '@/lib/i18n';
 import '@/index.css';
 import App from './App';
 
+// Clear stale service workers that cause 'Failed to convert value to Response' crashes
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(regs => {
+    regs.forEach(reg => reg.unregister());
+  });
+}
+
 const tree = (
   <StrictMode>
     <BrowserRouter>
