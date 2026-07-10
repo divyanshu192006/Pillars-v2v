@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAuth, getDashboardPath } from '@/contexts/AuthContext';
 import { Shield, Heart, Wifi } from 'lucide-react';
+import logoImg from '@/assets/Maarakshak.png';
 
 const SPLASH_DURATION = 10000;
 const LOGO_SIZE = 150;
@@ -139,7 +140,7 @@ export default function SplashScreen() {
             style={{ width: LOGO_SIZE, height: LOGO_SIZE }}
           >
             <img
-              src="/Maaraksha.png"
+              src={logoImg}
               alt="MaaRaksha"
               className="h-full w-full rounded-full object-cover ring-4 ring-white/90 brightness-110"
             />

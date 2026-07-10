@@ -1,4 +1,5 @@
 import { cn } from '@/lib/utils';
+import logoImg from '@/assets/Maarakshak.png';
 
 interface LogoProps {
   size?: 'sm' | 'md' | 'lg' | 'xl' | 'splash';
@@ -22,7 +23,7 @@ export function Logo({ size = 'md', showText = true, className }: LogoProps) {
       <div className={cn('relative', s.img)}>
         <div className="absolute inset-0 rounded-full bg-gradient-to-br from-primary-400/30 to-purple-400/30 blur-xl" />
         <img
-          src="/Maaraksha.png"
+          src={logoImg}
           alt="MaaRaksha"
           className={cn('relative h-full w-full rounded-full object-cover shadow-lg shadow-primary-200/50 ring-4 ring-white')}
         />
