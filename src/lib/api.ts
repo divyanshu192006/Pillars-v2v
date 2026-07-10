@@ -3,7 +3,11 @@
 // Falls back to Render URL if env var is missing, or /api proxy in dev
 const API_BASE = (() => {
   const env = import.meta.env.VITE_API_URL;
-  if (env) return env.replace(/\/$/, '');
+  if (env) {
+    const base = env.replace(/\/$/, '');
+    // Ensure /api suffix — if VITE_API_URL was set without it
+    return base.endsWith('/api') ? base : `${base}/api`;
+  }
   // In dev (localhost), use Vite proxy
   if (typeof window !== 'undefined' && window.location.hostname === 'localhost') return '/api';
   // In production without env var, use Pillars-v2v Render directly
