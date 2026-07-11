@@ -18,7 +18,9 @@ if ('serviceWorker' in navigator) {
 
 // Wake up Render backend (free tier sleeps after inactivity — takes up to 50s to wake)
 // We ping immediately on app load so it's warm before user needs it
-const API_BASE = (import.meta.env.VITE_API_URL || 'https://pillars-v2v.onrender.com/api').replace(/\/$/, '');
+const API_BASE = (typeof window !== 'undefined' && window.location.hostname === 'localhost')
+  ? 'http://localhost:5000/api'
+  : 'https://pillars-v2v.onrender.com/api';
 
 async function wakeBackend() {
   for (let i = 0; i < 3; i++) {
